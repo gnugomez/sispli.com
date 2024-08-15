@@ -59,7 +59,7 @@ function getActiveFolderByRoute(route: RouteLocationNormalizedLoaded): Folder | 
 onMounted(() => {
   const activeFolder = getActiveFolderByRoute(useRoute())
   if (activeFolder)
-    doOpenFolder(activeFolder, { immediate: true })
+    doOpenFolder(activeFolder)
 })
 
 async function closeAllFolders() {
@@ -87,6 +87,9 @@ function isActiveOrHasActiveFoldersBelow(folder: Folder) {
 
 <template>
   <div class="layout-wrapper">
+    <div class="page-content">
+      <Home />
+    </div>
     <ClientOnly>
       <div :style="{ height: `${scrollableSpace + windowHeight}px` }" />
     </ClientOnly>
@@ -123,6 +126,10 @@ $maxNumberOfFolders: 10;
 .layout-wrapper {
   @apply flex min-h-0 inset-0;
   @apply transition-all duration-700 ease-in-out;
+
+  .page-content {
+    @apply fixed inset-0 overflow-hidden;
+  }
 
   .folder-wrapper {
     @apply flex-1 fixed inset-x-0;
