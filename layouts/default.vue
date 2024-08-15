@@ -19,7 +19,7 @@ const activeFolder = ref<Folder>()
 
 const folderRefs = ref<HTMLElement[]>([])
 
-const scrollableSpace = ref<HTMLElement>()
+const scrollableSpace = ref(0)
 
 const router = useRouter()
 const { height: windowHeight } = useWindowSize()
@@ -37,12 +37,11 @@ router.afterEach((to) => {
 })
 
 function getTopFolderContentHeight() {
-  return folderRefs.value.find(Boolean)?.querySelector('.content')?.clientHeight || 0
+  return folderRefs.value[0]?.querySelector('.content')?.clientHeight || 0
 }
 
 function resetScrollableHeight(height = getTopFolderContentHeight()) {
-  if (scrollableSpace.value)
-    scrollableSpace.value.style.height = `${height + windowHeight.value}px`
+  scrollableSpace.value = height + windowHeight.value
 }
 
 function doOpenFolder(folder: Folder, options: { immediate?: boolean } = {}) {
@@ -91,7 +90,9 @@ function isActiveOrHasActiveFoldersBelow(folder: Folder) {
 
 <template>
   <div class="layout-wrapper">
-    <div ref="scrollableSpace" />
+    <ClientOnly>
+      <div :style="{ height: `${scrollableSpace}px` }" />
+    </ClientOnly>
     <div class="folder-wrapper">
       <div
         v-for="(folder, index) in folders"
