@@ -1,31 +1,21 @@
-<!-- eslint-disable vue/html-self-closing -->
 <script setup lang="ts">
 import { defaultWindow } from '@vueuse/core'
-import Lenis from '@studio-freight/lenis'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
-let lenis: Lenis
-
-if (defaultWindow) {
-  lenis = new Lenis()
-  function raf(time: number) {
-    lenis.raf(time)
-    defaultWindow?.requestAnimationFrame(raf)
-  }
-  defaultWindow.requestAnimationFrame(raf)
-}
+const { scrollTo } = useEnhancedScroll()
 
 interface Folder {
   title: string
-  isActive: boolean
   route: string
 }
 
 const folders = ref<Folder[]>([
-  { title: 'the artist', isActive: false, route: 'theartist' },
-  { title: 'the art', isActive: false, route: 'theart' },
-  { title: 'test', isActive: false, route: 'test' },
+  { title: 'the artist', route: 'theartist' },
+  { title: 'the art', route: 'theart' },
+  { title: 'test', route: 'test' },
 ])
+
+const activeFolder = ref<Folder>()
 
 const folderRefs = ref<HTMLElement[]>([])
 
@@ -38,73 +28,51 @@ const windowMinusFolders = computed(() => windowHeight.value - folderHeight.valu
 
 const { y } = useScroll(defaultWindow)
 
-function getPromiseWhenYReaches(target: number) {
-  return new Promise<void>((resolve) => {
-    const unsuscribe = watch(y, () => {
-      if (y.value === target) {
-        unsuscribe()
-        resolve()
-      }
-    })
-  })
-}
-
-router.beforeEach(async (to, from, next) => {
-  lenis.scrollTo(0, { lock: true })
-  if (y.value > 0)
-    await getPromiseWhenYReaches(0)
-  next()
-})
+router.beforeEach(async (_to, _from, next) => scrollTo(0, { lock: true }).then(next))
 
 router.afterEach((to) => {
-  const activeFolder = getActiveFolderByRoute(to)
-  activeFolder && requestFolderAnimation(activeFolder)
+  const folder = getActiveFolderByRoute(to)
+  folder && doOpenFolder(folder)
 })
 
-function requestFolderAnimation(activeFolder: Folder, options: { immediate?: boolean } = {}) {
-  const { immediate = false } = options
-  activeFolder.isActive = true
-  closeOtherFolders(activeFolder)
-  nextTick(() => {
-    resetScrollableHeight()
-  })
-  setTimeout(() => {
-    lenis.scrollTo(windowMinusFolders.value, { lock: true, immediate })
-  }, 270)
+function getTopFolderContentHeight() {
+  return folderRefs.value[0]?.querySelector('.content')?.clientHeight || 0
 }
-
-onMounted(() => {
-  const activeFolder = getActiveFolderByRoute(useRoute())
-  activeFolder && requestFolderAnimation(activeFolder, { immediate: true })
-})
 
 function resetScrollableHeight(height = getTopFolderContentHeight()) {
   if (scrollableSpace.value)
     scrollableSpace.value.style.height = `${height + windowHeight.value}px`
 }
 
-function getTopFolderContentHeight() {
-  return folderRefs.value[0]?.querySelector('.content')?.clientHeight || 0
+function doOpenFolder(folder: Folder, options: { immediate?: boolean } = {}) {
+  const { immediate = false } = options
+  activeFolder.value = folder
+  nextTick(() => {
+    resetScrollableHeight()
+  })
+  setTimeout(() => {
+    scrollTo(windowMinusFolders.value, { lock: true, immediate })
+  }, 270)
 }
+
+function getActiveFolderByRoute(route: RouteLocationNormalizedLoaded): Folder | undefined {
+  return folders.value.find(f => f.route === route.name)
+}
+
+onMounted(() => {
+  const activeFolder = getActiveFolderByRoute(useRoute())
+  activeFolder && doOpenFolder(activeFolder, { immediate: true })
+})
 
 function openFolder(folder: Folder) {
   router.push({ name: folder.route })
 }
 
-function closeOtherFolders(folder: Folder) {
-  folders.value.forEach((f) => {
-    if (f !== folder)
-      f.isActive = false
-  })
-}
-
 function isActiveOrHasActiveFoldersBelow(folder: Folder) {
-  const index = folders.value.findIndex(f => f === folder)
-  return folders.value.slice(index).some(f => f.isActive)
-}
-
-function getActiveFolderByRoute(route: RouteLocationNormalizedLoaded): Folder | undefined {
-  return folders.value.find(f => f.route === route.name)
+  if (!activeFolder.value)
+    return false
+  const curentIndex = folders.value.indexOf(folder)
+  return folders.value.includes(activeFolder.value, curentIndex)
 }
 </script>
 
@@ -118,7 +86,7 @@ function getActiveFolderByRoute(route: RouteLocationNormalizedLoaded): Folder | 
         ref="folderRefs"
         class="sizer"
         :class="{
-          'is-active': folder.isActive,
+          'is-active': folder === activeFolder,
           [`sizer-${folders.length - index - 1}`]: true,
         }"
         :style="isActiveOrHasActiveFoldersBelow(folder) && { transform: `translateY(-${y}px)` } "
