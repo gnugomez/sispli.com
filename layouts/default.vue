@@ -32,11 +32,12 @@ router.beforeEach(async (_to, _from, next) => scrollTo(0, { lock: true }).then(n
 
 router.afterEach((to) => {
   const folder = getActiveFolderByRoute(to)
-  folder && doOpenFolder(folder)
+  if (folder)
+    doOpenFolder(folder)
 })
 
 function getTopFolderContentHeight() {
-  return folderRefs.value[0]?.querySelector('.content')?.clientHeight || 0
+  return folderRefs.value.find(Boolean)?.querySelector('.content')?.clientHeight || 0
 }
 
 function resetScrollableHeight(height = getTopFolderContentHeight()) {
@@ -61,10 +62,22 @@ function getActiveFolderByRoute(route: RouteLocationNormalizedLoaded): Folder | 
 
 onMounted(() => {
   const activeFolder = getActiveFolderByRoute(useRoute())
-  activeFolder && doOpenFolder(activeFolder, { immediate: true })
+  if (activeFolder)
+    doOpenFolder(activeFolder, { immediate: true })
 })
 
-function openFolder(folder: Folder) {
+async function closeAllFolders() {
+  await scrollTo(0, { lock: true })
+  activeFolder.value = undefined
+  resetScrollableHeight(0)
+  router.push({ name: 'index' })
+}
+
+function toggleFolder(folder: Folder) {
+  if (activeFolder.value === folder) {
+    closeAllFolders()
+    return
+  }
   router.push({ name: folder.route })
 }
 
@@ -92,7 +105,7 @@ function isActiveOrHasActiveFoldersBelow(folder: Folder) {
         :style="isActiveOrHasActiveFoldersBelow(folder) && { transform: `translateY(-${y}px)` } "
       >
         <div class="folder">
-          <div class="header" @click="openFolder(folder)">
+          <div class="header" @click="toggleFolder(folder)">
             <h1 class="title">
               {{ folder.title }}
             </h1>
