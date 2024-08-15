@@ -2,8 +2,6 @@
 import { defaultWindow } from '@vueuse/core'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
-const { scrollTo } = useEnhancedScroll()
-
 interface Folder {
   title: string
   route: string
@@ -15,18 +13,18 @@ const folders = ref<Folder[]>([
   { title: 'test', route: 'test' },
 ])
 
-const activeFolder = ref<Folder>()
-
-const folderRefs = ref<HTMLElement[]>([])
-
-const scrollableSpace = ref(0)
-
 const router = useRouter()
 const { height: windowHeight } = useWindowSize()
+const { scrollTo } = useEnhancedScroll()
+const { y } = useScroll(defaultWindow)
+
+const activeFolder = ref<Folder>()
+const folderRefs = ref<HTMLElement[]>([])
+const scrollableSpace = ref(0)
+
+const activeFolderRef = computed(() => activeFolder.value && folderRefs.value[folders.value.indexOf(activeFolder.value)])
 const folderHeight = computed(() => folderRefs.value[0]?.clientHeight || 0)
 const windowMinusFolders = computed(() => windowHeight.value - folderHeight.value * folders.value.length)
-
-const { y } = useScroll(defaultWindow)
 
 router.beforeEach(async (_to, _from, next) => scrollTo(0, { lock: true }).then(next))
 
@@ -36,12 +34,12 @@ router.afterEach((to) => {
     doOpenFolder(folder)
 })
 
-function getTopFolderContentHeight() {
-  return folderRefs.value[0]?.querySelector('.content')?.clientHeight || 0
+function getActiveContentHeight() {
+  return activeFolderRef.value?.querySelector('.content')?.clientHeight || 0
 }
 
-function resetScrollableHeight(height = getTopFolderContentHeight()) {
-  scrollableSpace.value = height + windowHeight.value
+function resetScrollableHeight(height = getActiveContentHeight()) {
+  scrollableSpace.value = height
 }
 
 function doOpenFolder(folder: Folder, options: { immediate?: boolean } = {}) {
@@ -49,10 +47,9 @@ function doOpenFolder(folder: Folder, options: { immediate?: boolean } = {}) {
   activeFolder.value = folder
   nextTick(() => {
     resetScrollableHeight()
+    setTimeout(() =>
+      scrollTo(windowMinusFolders.value, { lock: true, immediate }), 300)
   })
-  setTimeout(() => {
-    scrollTo(windowMinusFolders.value, { lock: true, immediate })
-  }, 270)
 }
 
 function getActiveFolderByRoute(route: RouteLocationNormalizedLoaded): Folder | undefined {
@@ -91,7 +88,7 @@ function isActiveOrHasActiveFoldersBelow(folder: Folder) {
 <template>
   <div class="layout-wrapper">
     <ClientOnly>
-      <div :style="{ height: `${scrollableSpace}px` }" />
+      <div :style="{ height: `${scrollableSpace + windowHeight}px` }" />
     </ClientOnly>
     <div class="folder-wrapper">
       <div

@@ -1,12 +1,10 @@
 import Lenis from '@studio-freight/lenis'
 import { defaultWindow } from '@vueuse/core'
 
-type LenisOptions = Parameters<Lenis['scrollTo']>[1]
+type LenisOptions = NonNullable<Parameters<Lenis['scrollTo']>[1]>
+type OnScrollOptions = Omit<LenisOptions, 'onComplete'>
 
 export function useEnhancedScroll() {
-  const scroll = useScroll(defaultWindow)
-  const { y } = scroll
-
   // Create a new instance of Lenis
   let lenis: Lenis
 
@@ -19,24 +17,11 @@ export function useEnhancedScroll() {
     defaultWindow.requestAnimationFrame(raf)
   }
 
-  const whenYReaches = (target: number) => new Promise<void>((resolve) => {
-    if (y.value === target) {
-      resolve()
-      return
-    }
-    const unsuscribe = watch(y, () => {
-      if (y.value === target) {
-        unsuscribe()
-        resolve()
-      }
-    })
-  })
-
   return {
-    ...scroll,
-    scrollTo: async (target: number, options: LenisOptions): Promise<void> => {
-      lenis.scrollTo(target, options)
-      await whenYReaches(target)
+    scrollTo: async (target: number, options?: OnScrollOptions): Promise<void> => {
+      return new Promise((resolve) => {
+        lenis.scrollTo(target, { ...options, onComplete: () => resolve() })
+      })
     },
   }
 }
