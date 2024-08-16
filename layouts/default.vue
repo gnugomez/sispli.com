@@ -5,13 +5,49 @@ import type { RouteLocationNormalizedLoaded } from 'vue-router'
 interface Folder {
   title: string
   route: string
+  colors: {
+    background: string
+    border: string
+    shadow: string
+  }
 }
 
 const folders = ref<Folder[]>([
-  { title: 'the artist', route: 'theartist' },
-  { title: 'the art', route: 'theart' },
-  { title: 'test', route: 'test' },
+  {
+    title: 'the artist',
+    route: 'theartist',
+    colors: {
+      background: '#FFF2E6',
+      border: '#f1dbc6',
+      shadow: '#e4cbb4b8',
+    },
+  },
+  {
+    title: 'the art',
+    route: 'theart',
+    colors: {
+      background: '#FFEBEE',
+      border: '#ffdde1',
+      shadow: '#FFEBEEb8',
+    },
+  },
+  {
+    title: 'contact',
+    route: 'contact',
+    colors: {
+      background: '#EBF8FF',
+      border: '#d5eefd',
+      shadow: '#EBF8FFb8',
+    },
+  },
 ])
+
+function getFolderColorVariables(folder: Folder): Record<string, string> {
+  return Object.entries(folder.colors).reduce((acc, [key, value]) => {
+    acc[`--folder-color-${key}`] = value
+    return acc
+  }, {} as Record<string, string>)
+}
 
 const router = useRouter()
 const { height: windowHeight } = useWindowSize()
@@ -100,20 +136,22 @@ function isActiveOrHasActiveFoldersBelow(folder: Folder) {
           [`sizer-${folders.length - index - 1}`]: true,
         }" :style="isActiveOrHasActiveFoldersBelow(folder) && { transform: `translateY(-${y}px)` }"
       >
-        <div class="folder">
-          <div class="header" @click="toggleFolder(folder)">
-            <div class="left">
-              <h1 class="title">
-                {{ folder.title }}
-              </h1>
+        <div class="folder" :style="getFolderColorVariables(folder)">
+          <div class="folder-shadow-wrapper">
+            <div class="header" @click="toggleFolder(folder)">
+              <div class="left">
+                <h1 class="title">
+                  {{ folder.title }}
+                </h1>
+              </div>
+              <FolderIndent class="indent" />
+              <div class="right" />
             </div>
-            <FolderIndent class="indent" />
-            <div class="right" />
+            <div class="content">
+              <slot />
+            </div>
+            <div class="separator" />
           </div>
-          <div class="content">
-            <slot />
-          </div>
-          <div class="separator" />
         </div>
       </div>
     </div>
@@ -146,21 +184,21 @@ $maxNumberOfFolders: 10;
 
     .folder {
       @apply w-full min-h-dvh relative;
-      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(1px 0px 0px rgba(0, 0, 0, 0.19)) drop-shadow(-1px 0px 0px rgba(0, 0, 0, 0.19)) drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.19)) drop-shadow(0px -1px 0px rgba(0, 0, 0, 0.19));
+      filter: drop-shadow(1px 0px 0px var(--folder-color-border)) drop-shadow(-1px 0px 0px var(--folder-color-border)) drop-shadow(0px 1px 0px var(--folder-color-border)) drop-shadow(0px -1px 0px var(--folder-color-border));
 
       .content {
-        @apply bg-white min-h-[75px];
+        @apply bg-[var(--folder-color-background)] min-h-[75px];
       }
 
       .separator {
-        @apply w-full h-[75px] bg-white;
+        @apply w-full h-[75px] bg-[var(--folder-color-background)];
       }
 
       .header {
         @apply flex flex-row justify-between relative;
 
         .indent {
-          @apply text-white justify-self-center md:block hidden;
+          @apply text-[var(--folder-color-background)] justify-self-center md:block hidden;
         }
 
         .left {
@@ -169,7 +207,7 @@ $maxNumberOfFolders: 10;
 
         .left,
         .right {
-          @apply flex-1 bg-white;
+          @apply flex-1 bg-[var(--folder-color-background)];
         }
       }
 
