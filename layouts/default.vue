@@ -95,25 +95,25 @@ function isActiveOrHasActiveFoldersBelow(folder: Folder) {
     </ClientOnly>
     <div class="folder-wrapper">
       <div
-        v-for="(folder, index) in folders"
-        :key="index"
-        ref="folderRefs"
-        class="sizer"
-        :class="{
+        v-for="(folder, index) in folders" :key="index" ref="folderRefs" class="sizer" :class="{
           'is-active': folder === activeFolder,
           [`sizer-${folders.length - index - 1}`]: true,
-        }"
-        :style="isActiveOrHasActiveFoldersBelow(folder) && { transform: `translateY(-${y}px)` } "
+        }" :style="isActiveOrHasActiveFoldersBelow(folder) && { transform: `translateY(-${y}px)` }"
       >
         <div class="folder">
           <div class="header" @click="toggleFolder(folder)">
-            <h1 class="title">
-              {{ folder.title }}
-            </h1>
+            <div class="left">
+              <h1 class="title">
+                {{ folder.title }}
+              </h1>
+            </div>
+            <FolderIndent class="indent" />
+            <div class="right" />
           </div>
           <div class="content">
             <slot />
           </div>
+          <div class="separator" />
         </div>
       </div>
     </div>
@@ -135,21 +135,44 @@ $maxNumberOfFolders: 10;
     @apply flex-1 fixed inset-x-0;
 
     .sizer {
-      @apply w-full h-16 fixed bottom-0;
+      @apply w-full h-[75px] fixed bottom-0;
 
       @for $i from 1 through $maxNumberOfFolders {
         &-#{$i} {
-          bottom: 4rem * $i;
+          bottom: 75px * $i;
         }
       }
     }
+
     .folder {
-      @apply w-full min-h-dvh bg-white relative;
-      box-shadow: 10px 1px 20px 1px rgb(0 0 0 / 13%);
+      @apply w-full min-h-dvh relative;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(1px 0px 0px rgba(0, 0, 0, 0.19)) drop-shadow(-1px 0px 0px rgba(0, 0, 0, 0.19)) drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.19)) drop-shadow(0px -1px 0px rgba(0, 0, 0, 0.19));
+
+      .content {
+        @apply bg-white min-h-[75px];
+      }
+
+      .separator {
+        @apply w-full h-[75px] bg-white;
+      }
 
       .header {
-        @apply h-16 flex items-center px-6;
+        @apply flex flex-row justify-between relative;
+
+        .indent {
+          @apply text-white justify-self-center md:block hidden;
+        }
+
+        .left {
+          @apply h-[75px] flex items-center px-6;
+        }
+
+        .left,
+        .right {
+          @apply flex-1 bg-white;
+        }
       }
+
       .title {
         @apply font-medium;
       }
