@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Granaina';
+    src: url('../fonts/granaina.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Brasilero';
+    src: url('../fonts/brasilero.otf') format('opentype');
+}

@@ -43,10 +43,11 @@ const folders = ref<Folder[]>([
 ])
 
 function getFolderColorVariables(folder: Folder): Record<string, string> {
-  return Object.entries(folder.colors).reduce((acc, [key, value]) => {
-    acc[`--folder-color-${key}`] = value
-    return acc
-  }, {} as Record<string, string>)
+  return Object.entries(folder.colors)
+    .reduce<Record<string, string>>((acc, [key, value]) => {
+      acc[`--folder-color-${key}`] = value
+      return acc
+    }, {})
 }
 
 const router = useRouter()
@@ -184,7 +185,7 @@ $maxNumberOfFolders: 10;
 
     .folder {
       @apply w-full min-h-dvh relative;
-      filter: drop-shadow(1px 0px 0px var(--folder-color-border)) drop-shadow(-1px 0px 0px var(--folder-color-border)) drop-shadow(0px 1px 0px var(--folder-color-border)) drop-shadow(0px -1px 0px var(--folder-color-border));
+      /* filter: drop-shadow(1px 0px 0px var(--folder-color-border)) drop-shadow(-1px 0px 0px var(--folder-color-border)) drop-shadow(0px 1px 0px var(--folder-color-border)) drop-shadow(0px -1px 0px var(--folder-color-border)); */
 
       .content {
         @apply bg-[var(--folder-color-background)] min-h-[75px];
@@ -212,7 +213,7 @@ $maxNumberOfFolders: 10;
       }
 
       .title {
-        @apply font-medium;
+        @apply font-medium font-inconsolata text-xl text-primary;
       }
     }
   }
