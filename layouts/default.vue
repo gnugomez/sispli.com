@@ -58,10 +58,11 @@ const { y } = useScroll(defaultWindow)
 const activeFolder = ref<Folder>()
 const folderRefs = ref<HTMLElement[]>([])
 const scrollableSpace = ref(0)
+const headerHeight = 140
 
 const activeFolderRef = computed(() => activeFolder.value && folderRefs.value[folders.value.indexOf(activeFolder.value)])
 const folderHeight = computed(() => folderRefs.value[0]?.clientHeight || 0)
-const windowMinusFolders = computed(() => windowHeight.value - folderHeight.value * folders.value.length)
+const windowMinusFolders = computed(() => windowHeight.value - folderHeight.value * folders.value.length - headerHeight)
 
 router.beforeEach(async (_to, _from, next) => scrollTo(0, { lock: true }).then(next))
 
@@ -156,6 +157,7 @@ function isActiveOrHasActiveFoldersBelow(folder: Folder) {
         </div>
       </div>
     </div>
+    <Header />
   </div>
 </template>
 
@@ -203,7 +205,7 @@ $maxNumberOfFolders: 10;
         }
 
         .left {
-          @apply h-[75px] flex items-center px-6;
+          @apply h-[75px] flex items-center px-8;
         }
 
         .left,
