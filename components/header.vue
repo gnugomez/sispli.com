@@ -1,10 +1,23 @@
+<script setup lang="ts">
+const props = defineProps<{
+  onGoToHome: () => void
+}>()
+</script>
+
 <template>
-  <header class="flex justify-between px-8 py-10 fixed top-0 inset-x-0 mix-blend-difference">
-    <h1 class="font-granaina text-primary text-6xl font-normal">
+  <header class="grid grid-cols-12 place-items-center px-8 py-3 fixed top-0 inset-x-0 mix-blend-difference">
+    <h1 class="title col-span-5 mr-auto">
       Sispli!
     </h1>
-    <h1 class="font-granaina text-primary text-6xl font-normal">
+    <img src="../assets/images/sispli_logo.svg" class="h-32 col-span-2" @click="props.onGoToHome">
+    <h1 class="title col-span-5 ml-auto">
       Studio
     </h1>
   </header>
 </template>
+
+<style lang="scss" scoped>
+.title{
+    @apply font-granaina text-primary text-4xl sm:text-6xl font-normal;
+}
+</style>

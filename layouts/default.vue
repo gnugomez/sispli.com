@@ -157,12 +157,15 @@ function isActiveOrHasActiveFoldersBelow(folder: Folder) {
         </div>
       </div>
     </div>
-    <Header />
+    <Header @go-to-home="closeAllFolders" />
   </div>
 </template>
 
 <style scoped lang="scss">
 $maxNumberOfFolders: 10;
+$folderHeight: 75px;
+$mobileFolderHeight: 60px;
+$themeMobileBreakpoint: theme('screens.sm');
 
 .layout-wrapper {
   @apply flex min-h-0 inset-0;
@@ -176,11 +179,20 @@ $maxNumberOfFolders: 10;
     @apply flex-1 fixed inset-x-0;
 
     .sizer {
-      @apply w-full h-[75px] fixed bottom-0;
+      @apply w-full fixed bottom-0;
+      height: $folderHeight;
+
+      @media (max-width: $themeMobileBreakpoint) {
+        height: $mobileFolderHeight;
+      }
 
       @for $i from 1 through $maxNumberOfFolders {
         &-#{$i} {
-          bottom: 75px * $i;
+          bottom: $folderHeight * $i;
+
+          @media (max-width: $themeMobileBreakpoint) {
+              bottom: $mobileFolderHeight * $i;
+          }
         }
       }
     }
@@ -190,11 +202,21 @@ $maxNumberOfFolders: 10;
       /* filter: drop-shadow(1px 0px 0px var(--folder-color-border)) drop-shadow(-1px 0px 0px var(--folder-color-border)) drop-shadow(0px 1px 0px var(--folder-color-border)) drop-shadow(0px -1px 0px var(--folder-color-border)); */
 
       .content {
-        @apply bg-[var(--folder-color-background)] min-h-[75px];
+        @apply bg-[var(--folder-color-background)];
+        min-height: $folderHeight;
+
+        @media (max-width: $themeMobileBreakpoint) {
+          min-height: $mobileFolderHeight;
+        }
       }
 
       .separator {
-        @apply w-full h-[75px] bg-[var(--folder-color-background)];
+        @apply w-full bg-[var(--folder-color-background)];
+        height: $folderHeight;
+
+        @media (max-width: $themeMobileBreakpoint) {
+          height: $mobileFolderHeight;
+        }
       }
 
       .header {
@@ -205,12 +227,17 @@ $maxNumberOfFolders: 10;
         }
 
         .left {
-          @apply h-[75px] flex items-center px-8;
+          @apply flex items-center;
         }
 
         .left,
         .right {
-          @apply flex-1 bg-[var(--folder-color-background)];
+          @apply flex-1 bg-[var(--folder-color-background)]  px-8;
+          height: $folderHeight;
+
+          @media (max-width: $themeMobileBreakpoint) {
+            height: $mobileFolderHeight;
+          }
         }
       }
 
