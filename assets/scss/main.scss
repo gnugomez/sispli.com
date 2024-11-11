@@ -11,3 +11,11 @@
     font-family: 'Brasilero';
     src: url('../fonts/brasilero.otf') format('opentype');
 }
+
+body {
+    @apply bg-primary-background;
+}
+
+html, body, #__nuxt, #nuxt {
+    height: 100%;
+}

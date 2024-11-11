@@ -1,253 +1,36 @@
 <script setup lang="ts">
-import { defaultWindow } from '@vueuse/core'
-import type { RouteLocationNormalizedLoaded } from 'vue-router'
-
-interface Folder {
-  title: string
-  route: string
-  colors: {
-    background: string
-    border: string
-    shadow: string
-  }
-}
-
-const folders = ref<Folder[]>([
-  {
-    title: 'the artist',
-    route: 'theartist',
-    colors: {
-      background: '#FFF2E6',
-      border: '#f1dbc6',
-      shadow: '#e4cbb4b8',
-    },
-  },
-  {
-    title: 'the art',
-    route: 'theart',
-    colors: {
-      background: '#FFEBEE',
-      border: '#ffdde1',
-      shadow: '#FFEBEEb8',
-    },
-  },
-  {
-    title: 'contact',
-    route: 'contact',
-    colors: {
-      background: '#EBF8FF',
-      border: '#d5eefd',
-      shadow: '#EBF8FFb8',
-    },
-  },
-])
-
-function getFolderColorVariables(folder: Folder): Record<string, string> {
-  return Object.entries(folder.colors)
-    .reduce<Record<string, string>>((acc, [key, value]) => {
-      acc[`--folder-color-${key}`] = value
-      return acc
-    }, {})
-}
-
-const router = useRouter()
-const { height: windowHeight } = useWindowSize()
-const { scrollTo } = useEnhancedScroll()
-const { y } = useScroll(defaultWindow)
-
-const activeFolder = ref<Folder>()
-const folderRefs = ref<HTMLElement[]>([])
-const headerRef = ref<{ getHeight: () => number }>()
-const scrollableSpace = ref(0)
-
-const headerHeight = computed(() => {
-  return headerRef.value?.getHeight() || 0
-})
-const activeFolderRef = computed(() => activeFolder.value && folderRefs.value[folders.value.indexOf(activeFolder.value)])
-const folderHeight = computed(() => folderRefs.value[0]?.clientHeight || 0)
-const windowMinusFolders = computed(() => windowHeight.value - folderHeight.value * folders.value.length - headerHeight.value)
-
-router.beforeEach(async (_to, _from, next) => scrollTo(0, { lock: true }).then(next))
-
-router.afterEach((to) => {
-  const folder = getActiveFolderByRoute(to)
-  if (folder)
-    doOpenFolder(folder)
-})
-
-function getActiveContentHeight() {
-  return activeFolderRef.value?.querySelector('.content')?.clientHeight || 0
-}
-
-function resetScrollableHeight(height = getActiveContentHeight()) {
-  scrollableSpace.value = height
-}
-
-function doOpenFolder(folder: Folder, options: { immediate?: boolean } = {}) {
-  const { immediate = false } = options
-  activeFolder.value = folder
-  nextTick(() => {
-    resetScrollableHeight()
-    setTimeout(() =>
-      scrollTo(windowMinusFolders.value, { lock: true, immediate }), 300)
-  })
-}
-
-function getActiveFolderByRoute(route: RouteLocationNormalizedLoaded): Folder | undefined {
-  return folders.value.find(f => f.route === route.name)
-}
-
-onMounted(() => {
-  const activeFolder = getActiveFolderByRoute(useRoute())
-  if (activeFolder)
-    doOpenFolder(activeFolder)
-})
-
-async function closeAllFolders() {
-  await scrollTo(0, { lock: true })
-  activeFolder.value = undefined
-  resetScrollableHeight(0)
-  router.push({ name: 'index' })
-}
-
-function toggleFolder(folder: Folder) {
-  if (activeFolder.value === folder) {
-    closeAllFolders()
-    return
-  }
-  router.push({ name: folder.route })
-}
-
-function isActiveOrHasActiveFoldersBelow(folder: Folder) {
-  if (!activeFolder.value)
-    return false
-  const curentIndex = folders.value.indexOf(folder)
-  return folders.value.includes(activeFolder.value, curentIndex)
-}
 </script>
 
 <template>
   <div class="layout-wrapper">
-    <div class="page-content">
-      <Home />
-    </div>
-    <ClientOnly>
-      <div :style="{ height: `${scrollableSpace + windowHeight}px` }" />
-    </ClientOnly>
-    <div class="folder-wrapper">
-      <div
-        v-for="(folder, index) in folders" :key="index" ref="folderRefs" class="sizer" :class="{
-          'is-active': folder === activeFolder,
-          [`sizer-${folders.length - index - 1}`]: true,
-        }" :style="isActiveOrHasActiveFoldersBelow(folder) && { transform: `translateY(-${y}px)` }"
-      >
-        <div class="folder" :style="getFolderColorVariables(folder)">
-          <div class="folder-shadow-wrapper">
-            <div class="header" @click="toggleFolder(folder)">
-              <div class="left">
-                <h1 class="title">
-                  {{ folder.title }}
-                </h1>
-              </div>
-              <FolderIndent class="indent" />
-              <div class="right" />
-            </div>
-            <div class="content">
-              <slot />
-            </div>
-            <div class="separator" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <Header ref="headerRef" @go-to-home="closeAllFolders" />
+    <img src="../assets/images/paper/tl.png" class="absolute top-0 left-0">
+    <img src="../assets/images/paper/tr.png" class="absolute top-0 right-0">
+    <img src="../assets/images/paper/bl.png" class="absolute bottom-0 left-0">
+    <NuxtPage />
   </div>
 </template>
 
 <style scoped lang="scss">
-$maxNumberOfFolders: 10;
-$folderHeight: 75px;
-$mobileFolderHeight: 60px;
-$themeMobileBreakpoint: theme('screens.sm');
-
 .layout-wrapper {
-  @apply flex min-h-0 inset-0;
-  @apply transition-all duration-700 ease-in-out;
+    @apply h-full relative p-11;
 
-  .page-content {
-    @apply fixed inset-0 overflow-hidden;
-  }
+    &::before {
+        content: '';
+        @apply w-full h-full absolute inset-0 block;
 
-  .folder-wrapper {
-    @apply flex-1 fixed inset-x-0;
+        --s: 50px;  /* control the size of the grid */
+        --n: 15;      /* control the granularity */
+        --t: 1px;    /* the thickness */
+        --g: 1px;   /* the gap between dashes */
 
-    .sizer {
-      @apply w-full fixed bottom-0;
-      height: $folderHeight;
-
-      @media (max-width: $themeMobileBreakpoint) {
-        height: $mobileFolderHeight;
-      }
-
-      @for $i from 1 through $maxNumberOfFolders {
-        &-#{$i} {
-          bottom: $folderHeight * $i;
-
-          @media (max-width: $themeMobileBreakpoint) {
-              bottom: $mobileFolderHeight * $i;
-          }
-        }
-      }
+        --c:#e3e3e3 25%,#0000 0;
+        background:
+            conic-gradient(at var(--g) var(--t),var(--c))
+             calc((var(--s)/var(--n) - var(--g) + var(--t))/2) 0/
+             calc(var(--s)/var(--n)) var(--s),
+            conic-gradient(from 180deg at var(--t) var(--g),var(--c))
+             0 calc((var(--s)/var(--n) - var(--g) + var(--t))/2)/
+             var(--s) calc(var(--s)/var(--n));
     }
-
-    .folder {
-      @apply w-full min-h-dvh relative;
-      /* filter: drop-shadow(1px 0px 0px var(--folder-color-border)) drop-shadow(-1px 0px 0px var(--folder-color-border)) drop-shadow(0px 1px 0px var(--folder-color-border)) drop-shadow(0px -1px 0px var(--folder-color-border)); */
-
-      .content {
-        @apply bg-[var(--folder-color-background)];
-        min-height: $folderHeight;
-
-        @media (max-width: $themeMobileBreakpoint) {
-          min-height: $mobileFolderHeight;
-        }
-      }
-
-      .separator {
-        @apply w-full bg-[var(--folder-color-background)];
-        height: $folderHeight;
-
-        @media (max-width: $themeMobileBreakpoint) {
-          height: $mobileFolderHeight;
-        }
-      }
-
-      .header {
-        @apply flex flex-row justify-between relative;
-
-        .indent {
-          @apply text-[var(--folder-color-background)] justify-self-center md:block hidden;
-        }
-
-        .left {
-          @apply flex items-center;
-        }
-
-        .left,
-        .right {
-          @apply flex-1 bg-[var(--folder-color-background)]  px-8;
-          height: $folderHeight;
-
-          @media (max-width: $themeMobileBreakpoint) {
-            height: $mobileFolderHeight;
-          }
-        }
-      }
-
-      .title {
-        @apply font-medium font-inconsolata text-xl text-primary;
-      }
-    }
-  }
 }
 </style>

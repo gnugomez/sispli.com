@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { onGoToHome } = defineProps<{
-  onGoToHome: () => void
+  onGoToHome?: () => void
 }>()
 const header = ref<HTMLElement>()
 
@@ -17,7 +17,7 @@ defineExpose({
 </script>
 
 <template>
-  <header ref="header" class="grid grid-cols-12 place-items-center px-8 py-3 fixed top-0 inset-x-0 mix-blend-difference">
+  <header ref="header" class="grid grid-cols-12 place-items-center py-3 w-full mix-blend-hard-light">
     <h1 class="title col-span-5 mr-auto" @click="onGoToHome">
       Sispli!
     </h1>

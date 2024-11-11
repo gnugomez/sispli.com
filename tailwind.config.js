@@ -15,7 +15,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#2E396A',
+        primary: {
+          DEFAULT: '#2E396A',
+          background: '#FFFBF8',
+        },
       },
       fontFamily: {
         inconsolata: ['Inconsolata', 'monospace'],
