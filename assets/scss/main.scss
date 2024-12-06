@@ -12,6 +12,12 @@
     src: url('../fonts/brasilero.otf') format('opentype');
 }
 
+
+@font-face {
+    font-family: 'Kapakana';
+    src: url('../fonts/kapakana.ttf') format('truetype');
+}
+
 body {
     @apply bg-primary-background;
 }

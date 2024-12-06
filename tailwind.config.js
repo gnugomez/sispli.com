@@ -24,6 +24,7 @@ export default {
         inconsolata: ['Inconsolata', 'monospace'],
         granaina: ['Granaina', 'sans-serif'],
         brasilero: ['Brasilero', 'sans-serif'],
+        kapakana: ['Kapakana', 'sans-serif'],
       },
     },
   },
