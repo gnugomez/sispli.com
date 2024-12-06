@@ -21,7 +21,7 @@ defineExpose({
     <h1 class="title col-span-5 mr-auto" @click="onGoToHome">
       Sispli!
     </h1>
-    <img src="../assets/images/sispli_logo.svg" class="max-h-32 col-span-2 cursor-pointer" @click="onGoToHome">
+    <img src="../assets/images/sispli_logo.svg" class="max-h-32 col-span-2 cursor-pointer" draggable="false" @click="onGoToHome">
     <h1 class="title col-span-5 ml-auto" @click="onGoToHome">
       Studio
     </h1>
