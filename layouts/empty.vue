@@ -1,31 +1,22 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
   <div class="layout-wrapper">
-    <Brand />
-    <div class="flex w-full justify-between">
-      <nuxt-img src="cum/tl.png" width="104" height="88" class="mix-blend-hard-light" />
-      <nuxt-img src="cum/tr.png" width="104" height="88" class="mix-blend-hard-light" />
-    </div>
-    <div class="flex-1 z-10 py-16">
-      <slot />
-    </div>
-    <div class="flex w-full justify-between">
-      <nuxt-img src="cum/bl.png" width="104" height="88" class="mix-blend-hard-light" />
-      <nuxt-img src="cum/br.png" width="104" height="88" class="mix-blend-hard-light" />
-    </div>
+    <img src="../assets/images/paper/tl.png" class="absolute top-0 left-0">
+    <img src="../assets/images/paper/tr.png" class="absolute top-0 right-0">
+    <img src="../assets/images/paper/bl.png" class="absolute bottom-0 left-0">
+    <NuxtPage />
   </div>
 </template>
 
 <style scoped lang="scss">
 .layout-wrapper {
-    @apply min-h-full relative p-11 flex flex-col;
+    @apply h-full relative p-11;
 
     &::before {
         content: '';
-        @apply w-full h-full absolute inset-0 block pointer-events-none;
+        @apply w-full h-full absolute inset-0 block;
 
         --s: 50px;  /* control the size of the grid */
         --n: 15;      /* control the granularity */

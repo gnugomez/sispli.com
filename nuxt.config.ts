@@ -2,7 +2,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/scss/main.scss'],
-  modules: ['@nuxt/image', '@vueuse/nuxt', '@nuxtjs/google-fonts'],
+  modules: [
+    '@nuxt/image',
+    '@vueuse/nuxt',
+    '@nuxtjs/google-fonts',
+    '@nuxt/content',
+  ],
 
   postcss: {
     plugins: {
@@ -13,9 +18,15 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Inconsolata: true,
+      Inconsolata: '200..900',
     },
   },
+
+  image: {
+    dir: 'assets/images',
+  },
+
+  content: {},
 
   compatibilityDate: '2024-11-11',
 })

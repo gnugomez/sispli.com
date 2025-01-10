@@ -18,13 +18,14 @@ export default {
         primary: {
           DEFAULT: '#2E396A',
           background: '#FFFBF8',
+          dimmed: '#5C70CE',
         },
       },
       fontFamily: {
         inconsolata: ['Inconsolata', 'monospace'],
         granaina: ['Granaina', 'sans-serif'],
         brasilero: ['Brasilero', 'sans-serif'],
-        kapakana: ['Kapakana', 'sans-serif'],
+        ppmondwest: ['PPMondwest', 'sans-serif'],
       },
     },
   },

@@ -14,12 +14,12 @@
 
 
 @font-face {
-    font-family: 'Kapakana';
-    src: url('../fonts/kapakana.ttf') format('truetype');
+    font-family: 'PPMondwest';
+    src: url('../fonts/ppmondwest.otf') format('opentype');
 }
 
 body {
-    @apply bg-primary-background;
+    @apply bg-primary-background font-inconsolata;
 }
 
 html, body, #__nuxt, #nuxt {
