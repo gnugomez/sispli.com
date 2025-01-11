@@ -7,6 +7,7 @@
     <img src="../assets/images/paper/tr.png" class="absolute top-0 right-0">
     <img src="../assets/images/paper/bl.png" class="absolute bottom-0 left-0">
     <NuxtPage />
+    <Menu relaxed />
   </div>
 </template>
 

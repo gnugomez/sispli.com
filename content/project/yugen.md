@@ -17,6 +17,22 @@ slides:
     alt: "Marques yugen"
     width: 3333
     height: 2500
+  - src: "project/yugen/slides/4.jpg"
+    alt: "Bullying"
+    width: 3333
+    height: 2500
+  - src: "project/yugen/slides/5.jpg"
+    alt: "Soledat"
+    width: 3333
+    height: 2500
+  - src: "project/yugen/slides/6.jpg"
+    alt: "Dol"
+    width: 3333
+    height: 2500
+  - src: "project/yugen/slides/7.jpg"
+    alt: "Conflictes íntims"
+    width: 3333
+    height: 2500
 ---
 
 # Yugen, the project, 2023

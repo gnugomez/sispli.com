@@ -6,15 +6,16 @@
   <div class="layout-wrapper">
     <Brand />
     <div class="flex w-full justify-between">
-      <nuxt-img src="cum/tl.png" width="104" height="88" class="mix-blend-hard-light" />
-      <nuxt-img src="cum/tr.png" width="104" height="88" class="mix-blend-hard-light" />
+      <nuxt-img src="cum/tl.png" width="104" height="88" class="mix-blend-hard-light" draggable="false" />
+      <nuxt-img src="cum/tr.png" width="104" height="88" class="mix-blend-hard-light" draggable="false" />
     </div>
     <div class="flex-1 z-10 py-16">
       <slot />
     </div>
+    <Menu />
     <div class="flex w-full justify-between">
-      <nuxt-img src="cum/bl.png" width="104" height="88" class="mix-blend-hard-light" />
-      <nuxt-img src="cum/br.png" width="104" height="88" class="mix-blend-hard-light" />
+      <nuxt-img src="cum/bl.png" width="104" height="88" class="mix-blend-hard-light" draggable="false" />
+      <nuxt-img src="cum/br.png" width="104" height="88" class="mix-blend-hard-light" draggable="false" />
     </div>
   </div>
 </template>
