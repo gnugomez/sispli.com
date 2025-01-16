@@ -6,23 +6,22 @@
   <div class="layout-wrapper">
     <Brand />
     <div class="flex w-full justify-between">
-      <nuxt-img src="cum/tl.png" width="104" height="88" class="mix-blend-hard-light" draggable="false" />
-      <nuxt-img src="cum/tr.png" width="104" height="88" class="mix-blend-hard-light" draggable="false" />
+      <nuxt-img src="cum/tl.png" width="104" height="88" class="mix-blend-hard-light w-16 sm:w-24" draggable="false" />
+      <nuxt-img src="cum/tr.png" width="104" height="88" class="mix-blend-hard-light w-16 sm:w-24" draggable="false" />
     </div>
-    <div class="flex-1 z-10 py-16">
+    <div class="flex-1 z-10 py-9 sm:py-16">
       <slot />
     </div>
-    <Menu />
     <div class="flex w-full justify-between">
-      <nuxt-img src="cum/bl.png" width="104" height="88" class="mix-blend-hard-light" draggable="false" />
-      <nuxt-img src="cum/br.png" width="104" height="88" class="mix-blend-hard-light" draggable="false" />
+      <nuxt-img src="cum/bl.png" width="104" height="88" class="mix-blend-hard-light w-16 sm:w-24" draggable="false" />
+      <nuxt-img src="cum/br.png" width="104" height="88" class="mix-blend-hard-light w-16 sm:w-24" draggable="false" />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .layout-wrapper {
-    @apply min-h-full relative p-11 flex flex-col;
+    @apply min-h-full relative p-3 pb-32 sm:p-11 flex flex-col;
 
     &::before {
         content: '';

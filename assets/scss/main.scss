@@ -29,3 +29,8 @@ html, body, #__nuxt, #nuxt {
 img {
   @apply select-none;
 }
+
+html {
+  scroll-snap-type: y mandatory;
+}
+

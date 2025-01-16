@@ -14,10 +14,12 @@ const { slides = [] } = defineProps<{
     <div class="slides">
       <div v-for="slide in slides" :key="slide.src" class="slide">
         <nuxt-img
-          :src="slide.src"
-          :width="slide.width"
-          :height="slide.height"
-          :alt="slide.alt"
+          class="background" :src="slide.src" :width="slide.width" :height="slide.height" :alt="slide.alt"
+          :placeholder="[80, Math.round((80 / slide.width) * slide.height)]"
+        />
+        <div class="absolute inset-0 backdrop-blur-3xl sm:hidden" />
+        <nuxt-img
+          class="image" :src="slide.src" :width="slide.width" :height="slide.height" :alt="slide.alt"
           :placeholder="[80, Math.round((80 / slide.width) * slide.height)]"
         />
       </div>
@@ -31,8 +33,33 @@ const { slides = [] } = defineProps<{
 </template>
 
 <style scoped lang="scss">
-.slide img {
-  @apply rounded-3xl;
+@media (max-width: theme("screens.sm")) {
+  .slides {
+    @apply -m-3;
+  }
+
+  .slide {
+    height: calc(100dvh - 110px);
+    @apply flex items-center relative;
+
+    img.background {
+      @apply absolute w-full h-full object-cover;
+    }
+  }
+}
+
+.slide {
+  scroll-snap-align: start;
+
+  img {
+    &.background {
+      @apply sm:hidden;
+    }
+
+    &.image {
+      @apply sm:rounded-3xl relative;
+    }
+  }
 }
 
 .layout {
@@ -40,7 +67,7 @@ const { slides = [] } = defineProps<{
   @apply grid grid-cols-12 gap-5;
 
   .slides {
-    @apply col-span-8 flex flex-col gap-5;
+    @apply col-span-12 sm:col-span-8 flex flex-col sm:gap-3 sm:gap-5;
 
     $gap: 20px;
 
@@ -50,7 +77,7 @@ const { slides = [] } = defineProps<{
   }
 
   .content {
-    @apply col-span-4;
+    @apply col-span-12 sm:col-span-4;
 
     .prose {
       @apply sticky top-8;
