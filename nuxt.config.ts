@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
     '@nuxt/content',
+    '@nuxthq/studio',
   ],
 
   postcss: {
