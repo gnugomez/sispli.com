@@ -49,8 +49,6 @@ const { slides = [] } = defineProps<{
 }
 
 .slide {
-  scroll-snap-align: start;
-
   img {
     &.background {
       @apply sm:hidden;
