@@ -1,28 +1,11 @@
 <script setup lang="ts">
-const { slides = [] } = defineProps<{
-  slides?: {
-    src: string
-    alt: string
-    width: number
-    height: number
-  }[]
-}>()
+// No props needed, slides will be passed as slot content
 </script>
 
 <template>
   <div class="layout">
     <div class="slides">
-      <div v-for="slide in slides" :key="slide.src" class="slide">
-        <nuxt-img
-          class="background" :src="slide.src" :width="slide.width" :height="slide.height" :alt="slide.alt"
-          :placeholder="[80, Math.round((80 / slide.width) * slide.height)]"
-        />
-        <div class="absolute inset-0 backdrop-blur-3xl sm:hidden" />
-        <nuxt-img
-          class="image" :src="slide.src" :width="slide.width" :height="slide.height" :alt="slide.alt"
-          :placeholder="[80, Math.round((80 / slide.width) * slide.height)]"
-        />
-      </div>
+      <slot name="slides" />
     </div>
     <div class="content">
       <div class="prose">
