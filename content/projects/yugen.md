@@ -55,13 +55,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   ---
   :::
 
-  :::slide
-  ---
-  alt: Dol
-  height: "2500"
-  src: project/yugen/slides/6.jpg
-  width: "3333"
-  ---
+  :::slide{alt="Dol" height="2500" src="project/yugen/slides/6.jpg" width="3333"}
   :::
 
   :::slide
