@@ -1,6 +1,6 @@
 ---
 title: Yugen the project
-slides: 
+slides:
   - image:
       alt: Yugen, the project
       src: project/yugen/slides/1.jpg
