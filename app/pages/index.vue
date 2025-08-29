@@ -21,11 +21,10 @@ definePageMeta({
       </h2>
     </div>
     <Brand size="huge" />
-    <div class="flex flex-col justify-start">
-      <h2 class="font-inconsolata text-primary mix-blend-hard-light text-center text-xl">
-        please (sispli) be kind, <br>
-        welcome to my world !
-      </h2>
+    <div class="flex flex-col justify-center">
+      <span class="font-inconsolata text-primary mix-blend-hard-light text-center text-xl">
+        choose your path:
+      </span>
     </div>
   </div>
 </template>
