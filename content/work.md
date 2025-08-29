@@ -1,5 +1,5 @@
 ---
-title: Portfolio/Work
+title: My Work 
 description: A showcase of my professional projects and collaborations.
 ---
 
