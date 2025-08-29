@@ -5,7 +5,7 @@
       <nuxt-img src="cum/tl.png" width="104" height="88" class="mix-blend-hard-light w-16 sm:w-24" draggable="false" />
       <nuxt-img src="cum/tr.png" width="104" height="88" class="mix-blend-hard-light w-16 sm:w-24" draggable="false" />
     </div>
-    <div class="flex-1 z-10 py-9 sm:py-16">
+    <div class="flex-1 z-10 py-9 sm:py-16 flex">
       <slot />
     </div>
     <div class="flex w-full justify-between">

@@ -2,7 +2,7 @@
 title: About me
 ---
 
-::box{.grid.grid-cols-1.md:grid-cols-12}
+::box{.grid.grid-cols-1.md:grid-cols-12.place-items-center.h-full}
   :::box{.md:col-span-8.grid.place-items-center}
   ![colage nuria adamy](/about.png)
   :::

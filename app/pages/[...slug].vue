@@ -10,12 +10,12 @@ if (!page.value) {
 
 <template>
   <div class="layout">
-    <ContentRenderer v-if="page" :value="page" />
+    <ContentRenderer v-if="page" :value="page" class="flex-1 relative" />
   </div>
 </template>
 
 <style scoped lang="scss">
 .layout {
-  @apply max-w-screen-xl mx-auto;
+  @apply max-w-screen-xl mx-auto flex-1 flex;
 }
 </style>
