@@ -8,15 +8,8 @@ useSeoMeta(data.value?.seo || {
 </script>
 
 <template>
-  <ScrollingSlides v-if="data">
-    <template #slides>
-      <Slide v-for="(slide, index) in data.slides" :key="index" :image="slide.image" :width="slide.width"
-        :height="slide.height" />
-    </template>
-
-    <template #default>
-      <ContentRenderer :value="data" />
-    </template>
+  <ScrollingSlides v-if="data" :slides="data.slides">
+    <ContentRenderer :value="data" />
   </ScrollingSlides>
   <div v-else class="prose">
     <h1>Project not found</h1>

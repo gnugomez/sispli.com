@@ -1,7 +1,24 @@
+<script setup lang="ts">
+const { slides } = defineProps<{
+  slides: Array<{
+    image: {
+      src: string
+      alt: string
+    }
+    width?: number
+    height?: number
+  }>
+}>()
+</script>
+
 <template>
   <div class="layout">
     <div class="slides">
-      <slot name="slides" />
+      <div v-for="(slide, index) in slides" :key="index" class="slide">
+        <nuxt-img class="image" :src="slide.image.src" :width="slide.width || 3333" :height="slide.height || 2500"
+          :alt="slide.image.alt"
+          :placeholder="[80, Math.round((80 / (slide.width || 3333)) * (slide.height || 2500))]" />
+      </div>
     </div>
     <div class="content">
       <div class="prose">
@@ -23,6 +40,10 @@
 
     @media (min-width: calc(theme('screens.xl') + $gap * 2)) {
       margin-left: calc((theme('screens.xl') - 100vw) / 2 + $gap);
+    }
+
+    .slide img {
+      @apply relative rounded-2xl sm:rounded-[2rem];
     }
   }
 

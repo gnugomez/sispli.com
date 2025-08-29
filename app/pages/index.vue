@@ -20,7 +20,7 @@ definePageMeta({
         welcome to my world !
       </h2>
     </div>
-    <Brand size="huge" />
+    <BrandHome size="huge" />
     <div class="flex flex-col justify-center">
       <span class="font-inconsolata text-primary mix-blend-hard-light text-center text-xl">
         choose your path:
