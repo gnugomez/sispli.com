@@ -2,12 +2,12 @@
 title: About me
 ---
 
-::box{class="grid grid-cols-1 md:grid-cols-12"}
-  :::box{class="md:col-span-8 grid place-items-center"}
+::box{.grid.grid-cols-1.md:grid-cols-12}
+  :::box{.md:col-span-8.grid.place-items-center}
   ![colage nuria adamy](/about.png)
   :::
 
-  :::box{class="md:col-span-4"}
+  :::box{.md:col-span-4}
   # Nuria Adamy,
   
   A creative artist, with graphic design skills. Currently living in Girona (Catalonia), raised in Braga (Portugal) but I was born in Lleida, actually.
