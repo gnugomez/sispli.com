@@ -3,37 +3,37 @@ title: Yugen the project
 slides:
   - image:
       alt: Yugen, the project
-      src: project/yugen/slides/1.jpg
+      src: /projects/yugen/slides/1.jpg
     height: 2500
     width: 3333
   - image:
       alt: Logo Yugen
-      src: project/yugen/slides/2.jpg
+      src: /projects/yugen/slides/2.jpg
     height: 2500
     width: 3333
   - image:
       alt: Marques yugen
-      src: project/yugen/slides/3.jpg
+      src: /projects/yugen/slides/3.jpg
     height: 2500
     width: 3333
   - image:
       alt: Bullying
-      src: project/yugen/slides/4.jpg
+      src: /projects/yugen/slides/4.jpg
     height: 2500
     width: 3333
   - image:
       alt: Soledat
-      src: project/yugen/slides/5.jpg
+      src: /projects/yugen/slides/5.jpg
     height: 2500
     width: 3333
   - image:
       alt: Dol
-      src: project/yugen/slides/6.jpg
+      src: /projects/yugen/slides/6.jpg
     height: 2500
     width: 3333
   - image:
       alt: Conflictes íntims
-      src: project/yugen/slides/7.jpg
+      src: /projects/yugen/slides/7.jpg
     height: 2500
     width: 3333
 ---
