@@ -12,7 +12,8 @@ const { image, width = 3333, height = 2500 } = defineProps<{
 
 <template>
   <div class="slide">
-    <nuxt-img class="image" :src="image.src" :width="width" :height="height" :alt="image.alt" placeholder />
+    <nuxt-img class="image" :src="image.src" :width="width" :height="height" :alt="image.alt"
+      :placeholder="[80, Math.round((80 / width) * height)]" />
   </div>
 </template>
 
