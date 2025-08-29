@@ -9,5 +9,13 @@ if (!page.value) {
 </script>
 
 <template>
-  <ContentRenderer v-if="page" :value="page" />
+  <div class="layout">
+    <ContentRenderer v-if="page" :value="page" />
+  </div>
 </template>
+
+<style scoped lang="scss">
+.layout {
+  @apply max-w-screen-xl mx-auto;
+}
+</style>
