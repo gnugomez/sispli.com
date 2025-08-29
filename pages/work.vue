@@ -4,12 +4,12 @@ useSeoMeta({
   description: 'Sispli studio portfolio',
 })
 
-const { data } = await useAsyncData(`projects`, queryContent('project').find)
+const { data } = await useAsyncData(`projects`, queryCollection('projects').all)
 </script>
 
 <template>
-  <div v-for="project in data" :key="project._path" class="project">
-    <NuxtLink :to="project._path">
+  <div v-for="project in data" :key="project.path" class="project">
+    <NuxtLink :to="project.path">
       {{ project.title }}
     </NuxtLink>
   </div>

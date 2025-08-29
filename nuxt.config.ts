@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
     '@nuxt/content',
-    '@nuxthq/studio',
   ],
 
   postcss: {
@@ -26,7 +25,9 @@ export default defineNuxtConfig({
   image: {
   },
 
-  content: {},
-
-  compatibilityDate: '2024-11-11',
+  content: {
+    preview: {
+      api: 'https://api.nuxt.studio'
+    }
+  },
 })
