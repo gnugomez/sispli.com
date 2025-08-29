@@ -1,55 +1,51 @@
-// Mixin to apply styles to elements not inside .prose
-@mixin not-prose {
-  &:not(.prose *) {
-    @content;
-  }
-}
-
 // Typography styles for all elements except those inside .prose
 h1 {
-  @include not-prose {
-    @apply text-7xl font-bold leading-tight mb-4 font-ppmondwest text-primary-dimmed;
-  }
+  @apply text-7xl font-bold leading-tight mb-4 font-ppmondwest text-primary-dimmed;
 }
 
 h2 {
-  @include not-prose {
-    @apply text-6xl font-semibold leading-snug mb-3.5 font-ppmondwest text-primary-dimmed;
-  }
+  @apply text-6xl font-semibold leading-snug mb-3.5 font-ppmondwest text-primary-dimmed;
 }
 
 h3 {
-  @include not-prose {
-    @apply text-5xl font-semibold leading-normal mb-3 font-ppmondwest text-primary-dimmed;
-  }
+  @apply text-5xl font-semibold leading-normal mb-3 font-ppmondwest text-primary-dimmed;
 }
 
 h4 {
-  @include not-prose {
-    @apply text-4xl font-medium leading-normal mb-2.5 font-ppmondwest text-primary-dimmed;
-  }
+  @apply text-4xl font-medium leading-normal mb-2.5 font-ppmondwest text-primary-dimmed;
 }
 
 h5 {
-  @include not-prose {
-    @apply text-3xl font-medium leading-relaxed mb-2 font-ppmondwest text-primary-dimmed;
-  }
+  @apply text-3xl font-medium leading-relaxed mb-2 font-ppmondwest text-primary-dimmed;
 }
 
 h6 {
-  @include not-prose {
-    @apply text-2xl font-medium leading-relaxed mb-2 font-ppmondwest text-primary-dimmed;
-  }
+  @apply text-2xl font-medium leading-relaxed mb-2 font-ppmondwest text-primary-dimmed;
 }
 
 p {
-  @include not-prose {
-    @apply text-base leading-relaxed mb-4;
-  }
+  @apply text-base leading-relaxed mb-4;
 }
 
 a {
-  @include not-prose {
-    @apply text-primary no-underline hover:underline;
-  }
+  @apply text-primary no-underline hover:underline;
+}
+
+b,
+strong {
+  @apply font-bold;
+}
+
+i,
+em {
+  @apply italic;
+}
+
+u {
+  text-decoration: underline;
+}
+
+s,
+del {
+  text-decoration: line-through;
 }
