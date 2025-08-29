@@ -6,6 +6,8 @@ export default defineContentConfig({
       type: 'page',
       source: 'projects/**/*.md',
       schema: z.object({
+        categories: z.array(z.string()),
+        createdAt: z.date(),
         slides: z.array(z.object({
           image: z.object({
             src: z.string().editor({ input: "media" }),
@@ -15,6 +17,10 @@ export default defineContentConfig({
           width: z.number().optional(),
         }))
       })
+    }),
+    pages: defineCollection({
+      type: 'page',
+      source: '**/*.md',
     })
   }
 })

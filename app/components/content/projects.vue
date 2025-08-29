@@ -1,10 +1,5 @@
 <script setup lang="ts">
-useSeoMeta({
-  title: 'Portfolio',
-  description: 'Sispli studio portfolio',
-})
-
-const { data } = await useAsyncData(`projects`, queryCollection('projects').all)
+const { data } = await useAsyncData(`projects`, queryCollection('projects').order('createdAt', 'DESC').all)
 </script>
 
 <template>
