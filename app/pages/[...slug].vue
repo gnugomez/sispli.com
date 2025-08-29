@@ -6,6 +6,8 @@ const { data: page } = await useAsyncData(route.path, () => queryCollection('pag
 if (!page.value) {
   throw createError({ statusCode: 404, message: `Page ${route.path} not found`, statusMessage: 'Not Found' });
 }
+
+useSeoMeta(page.value.seo);
 </script>
 
 <template>
