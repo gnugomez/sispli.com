@@ -1,6 +1,7 @@
 ---
 title: Shop
 ---
+
 # Shop
 
-comming soon, stay tuned! 
+comming soon, stay tuned!
