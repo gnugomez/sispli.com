@@ -8,7 +8,7 @@ export default defineContentConfig({
       schema: z.object({
         slides: z.array(z.object({
           image: z.object({
-            src: z.string(),
+            src: z.string().editor({ input: "media" }),
             alt: z.string()
           }),
           height: z.number(),
