@@ -20,7 +20,7 @@ const { image, width = 3333, height = 2500 } = defineProps<{
 .slide {
   img {
     &.image {
-      @apply sm:rounded-3xl relative;
+      @apply relative rounded-[2rem];
     }
   }
 }

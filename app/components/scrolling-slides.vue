@@ -12,39 +12,12 @@
 </template>
 
 <style scoped lang="scss">
-@media (max-width: theme("screens.sm")) {
-  .slides {
-    @apply -m-3;
-  }
-
-  .slide {
-    height: calc(100dvh - 110px);
-    @apply flex items-center relative;
-
-    img.background {
-      @apply absolute w-full h-full object-cover;
-    }
-  }
-}
-
-.slide {
-  img {
-    &.background {
-      @apply sm:hidden;
-    }
-
-    &.image {
-      @apply sm:rounded-3xl relative;
-    }
-  }
-}
-
 .layout {
   @apply max-w-screen-xl mx-auto;
   @apply grid grid-cols-12 gap-5;
 
   .slides {
-    @apply col-span-12 sm:col-span-8 flex flex-col sm:gap-3 sm:gap-5;
+    @apply col-span-12 sm:col-span-8 flex flex-col gap-2;
 
     $gap: 20px;
 

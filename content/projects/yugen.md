@@ -1,5 +1,6 @@
 ---
 title: Yugen the project
+cover: /projects/yugen/cover.png
 slides:
   - image:
       alt: Yugen, the project

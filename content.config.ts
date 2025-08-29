@@ -8,6 +8,7 @@ export default defineContentConfig({
       schema: z.object({
         categories: z.array(z.string()),
         createdAt: z.date(),
+        cover: z.string().editor({ input: "media" }),
         slides: z.array(z.object({
           image: z.object({
             src: z.string().editor({ input: "media" }),
