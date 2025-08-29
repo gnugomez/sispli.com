@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import IconArrow from "~icons/ic/twotone-arrow-outward"
 const { data } = await useAsyncData(`projects`, queryCollection('projects').order('createdAt', 'DESC').all)
 </script>
 
 <template>
   <div v-for="project in data" :key="project.path" class="projects">
-    <NuxtLink :to="project.path">
+    <NuxtLink :to="project.path" class="project">
       <div class="cover">
+        <IconArrow class="arrow" />
         <NuxtImg :src="project.cover" placeholder />
       </div>
       {{ project.title }}
@@ -18,14 +20,25 @@ const { data } = await useAsyncData(`projects`, queryCollection('projects').orde
   @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-1;
 }
 
-.cover {
-  @apply overflow-hidden aspect-[2/3] bg-primary-dimmed/20;
+.project {
+  &:hover .cover {
+    .arrow {
+      @apply scale-100 opacity-100;
+    }
+  }
 
-  img {
-    @apply object-cover w-full h-full transition-transform duration-300 ease-in-out;
+  .cover {
+    @apply overflow-hidden aspect-[2/3] bg-primary-dimmed/20 relative;
 
-    &:hover {
-      @apply scale-105;
+    .arrow {
+      @apply absolute top-2 right-2 text-3xl text-white mix-blend-difference;
+      @apply transition-all duration-300 ease-in-out;
+      @apply origin-top-right scale-75 opacity-0;
+    }
+
+
+    img {
+      @apply object-cover w-full h-full;
     }
   }
 }

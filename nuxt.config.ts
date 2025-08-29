@@ -1,3 +1,6 @@
+import IconsResolver from 'unplugin-icons/resolver'
+import ViteComponents from 'unplugin-vue-components/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -7,6 +10,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
     '@nuxt/content',
+    'unplugin-icons/nuxt'
   ],
 
   postcss: {
@@ -29,5 +33,19 @@ export default defineNuxtConfig({
     preview: {
       api: 'https://api.nuxt.studio'
     }
+  },
+
+  vite: {
+    plugins: [
+      ViteComponents({
+        resolvers: [
+          IconsResolver({
+            prefix: '',
+            strict: true,
+          }),
+        ],
+        dts: true,
+      }),
+    ],
   },
 })
