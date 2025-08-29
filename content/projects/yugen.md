@@ -12,57 +12,70 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 #slides
   :::slide
   ---
-  alt: Yugen, the project
+  image:
+    alt: Yugen, the project
+    src: project/yugen/slides/1.jpg
   height: "2500"
-  src: project/yugen/slides/1.jpg
   width: "3333"
   ---
   :::
 
   :::slide
   ---
-  alt: Logo Yugen
+  image:
+    alt: Logo Yugen
+    src: project/yugen/slides/2.jpg
   height: "2500"
-  src: project/yugen/slides/2.jpg
   width: "3333"
   ---
   :::
 
   :::slide
   ---
-  alt: Marques yugen
+  image:
+    alt: Marques yugen
+    src: project/yugen/slides/3.jpg
   height: "2500"
-  src: project/yugen/slides/3.jpg
   width: "3333"
   ---
   :::
 
   :::slide
   ---
-  alt: Bullying
+  image:
+    alt: Bullying
+    src: project/yugen/slides/4.jpg
   height: "2500"
-  src: project/yugen/slides/4.jpg
   width: "3333"
   ---
   :::
 
   :::slide
   ---
-  alt: Soledat
+  image:
+    alt: Soledat
+    src: project/yugen/slides/5.jpg
   height: "2500"
-  src: project/yugen/slides/5.jpg
   width: "3333"
   ---
   :::
 
-  :::slide{alt="Dol" height="2500" src="project/yugen/slides/6.jpg" width="3333"}
+  :::slide
+  ---
+  image:
+    alt: Dol
+    src: project/yugen/slides/6.jpg
+  height: "2500"
+  width: "3333"
+  ---
   :::
 
   :::slide
   ---
-  alt: Conflictes íntims
+  image:
+    alt: Conflictes íntims
+    src: project/yugen/slides/7.jpg
   height: "2500"
-  src: project/yugen/slides/7.jpg
   width: "3333"
   ---
   :::

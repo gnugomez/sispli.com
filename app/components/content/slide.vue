@@ -1,7 +1,9 @@
 <script setup lang="ts">
-const { src, alt, width, height } = defineProps<{
-  src: string
-  alt: string
+const { image, width, height } = defineProps<{
+  image: {
+    src: string
+    alt: string
+  }
   width: number
   height: number
 }>()
@@ -9,15 +11,11 @@ const { src, alt, width, height } = defineProps<{
 
 <template>
   <div class="slide">
-    <nuxt-img
-      class="background" :src="src" :width="width" :height="height" :alt="alt"
-      :placeholder="[80, Math.round((80 / width) * height)]"
-    />
+    <nuxt-img class="background" :src="image.src" :width="width" :height="height" :alt="image.alt"
+      :placeholder="[80, Math.round((80 / width) * height)]" />
     <div class="absolute inset-0 backdrop-blur-3xl sm:hidden" />
-    <nuxt-img
-      class="image" :src="src" :width="width" :height="height" :alt="alt"
-      :placeholder="[80, Math.round((80 / width) * height)]"
-    />
+    <nuxt-img class="image" :src="image.src" :width="width" :height="height" :alt="image.alt"
+      :placeholder="[80, Math.round((80 / width) * height)]" />
   </div>
 </template>
 
@@ -27,6 +25,7 @@ const { src, alt, width, height } = defineProps<{
     &.background {
       @apply sm:hidden;
     }
+
     &.image {
       @apply sm:rounded-3xl relative;
     }

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-// No props needed, slides will be passed as slot content
-</script>
-
 <template>
   <div class="layout">
     <div class="slides">
