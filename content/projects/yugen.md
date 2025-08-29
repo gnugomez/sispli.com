@@ -4,38 +4,24 @@ slides:
   - image:
       alt: Yugen, the project
       src: /projects/yugen/slides/1.jpg
-    height: 2500
-    width: 3333
   - image:
       alt: Logo Yugen
       src: /projects/yugen/slides/2.jpg
-    height: 2500
-    width: 3333
   - image:
       alt: Marques yugen
       src: /projects/yugen/slides/3.jpg
-    height: 2500
-    width: 3333
   - image:
       alt: Bullying
       src: /projects/yugen/slides/4.jpg
-    height: 2500
-    width: 3333
   - image:
       alt: Soledat
       src: /projects/yugen/slides/5.jpg
-    height: 2500
-    width: 3333
   - image:
       alt: Dol
       src: /projects/yugen/slides/6.jpg
-    height: 2500
-    width: 3333
   - image:
       alt: Conflictes íntims
       src: /projects/yugen/slides/7.jpg
-    height: 2500
-    width: 3333
 ---
 
 # Yugen, the project, 2023

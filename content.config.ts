@@ -11,8 +11,8 @@ export default defineContentConfig({
             src: z.string().editor({ input: "media" }),
             alt: z.string()
           }),
-          height: z.number(),
-          width: z.number(),
+          height: z.number().optional(),
+          width: z.number().optional(),
         }))
       })
     })
