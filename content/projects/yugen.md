@@ -1,40 +1,39 @@
 ---
-title: 'Yugen the project'
+title: Yugen the project
 ---
 
-::ScrollingSlides
+::scrolling-slides
 ---
 slides:
-  - src: "project/yugen/slides/1.jpg"
-    alt: "Yugen, the project"
+  - src: project/yugen/slides/1.jpg
+    alt: Yugen, the project
     width: 3333
     height: 2500
-  - src: "project/yugen/slides/2.jpg"
-    alt: "Logo Yugen"
+  - src: project/yugen/slides/2.jpg
+    alt: Logo Yugen
     width: 3333
     height: 2500
-  - src: "project/yugen/slides/3.jpg"
-    alt: "Marques yugen"
+  - src: project/yugen/slides/3.jpg
+    alt: Marques yugen
     width: 3333
     height: 2500
-  - src: "project/yugen/slides/4.jpg"
-    alt: "Bullying"
+  - src: project/yugen/slides/4.jpg
+    alt: Bullying
     width: 3333
     height: 2500
-  - src: "project/yugen/slides/5.jpg"
-    alt: "Soledat"
+  - src: project/yugen/slides/5.jpg
+    alt: Soledat
     width: 3333
     height: 2500
-  - src: "project/yugen/slides/6.jpg"
-    alt: "Dol"
+  - src: project/yugen/slides/6.jpg
+    alt: Dol
     width: 3333
     height: 2500
-  - src: "project/yugen/slides/7.jpg"
-    alt: "Conflictes íntims"
+  - src: project/yugen/slides/7.jpg
+    alt: Conflictes íntims
     width: 3333
     height: 2500
 ---
-
 # Yugen, the project, 2023
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
