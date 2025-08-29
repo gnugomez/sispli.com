@@ -22,6 +22,7 @@ slides:
   - image:
       alt: Conflictes íntims
       src: /projects/yugen/slides/7.jpg
+categories: []
 ---
 
 # Yugen, the project, 2023
