@@ -15,6 +15,12 @@ const { slides } = defineProps<{
 const contentEl = useTemplateRef<HTMLDivElement>("contentEl")
 const [isToggled, toggle] = useToggle()
 const scrollLocked = useScrollLock(defaultWindow)
+const { y } = useScroll(contentEl)
+const { direction } = useSwipe(contentEl, {
+  onSwipe: () => {
+    if (direction.value === 'down' && y.value === 0 && isToggled.value) toggle(false)
+  }
+})
 
 watch(isToggled, (val) => {
   scrollLocked.value = val
@@ -32,7 +38,8 @@ watch(isToggled, (val) => {
           :placeholder="[80, Math.round((80 / (slide.width || 3333)) * (slide.height || 2500))]" />
       </div>
     </div>
-    <div class="content" :class="{ 'open': isToggled }" ref="contentEl" @click.prevent="() => !isToggled && toggle(true)">
+    <div class="content" :class="{ 'open': isToggled }" ref="contentEl"
+      @click.prevent="() => !isToggled && toggle(true)">
       <div class="prose">
         <slot />
       </div>
