@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { defaultWindow } from '@vueuse/core';
+
 const { slides } = defineProps<{
   slides: Array<{
     image: {
@@ -9,6 +11,16 @@ const { slides } = defineProps<{
     height?: number
   }>
 }>()
+
+const contentEl = useTemplateRef<HTMLDivElement>("contentEl")
+const [isToggled, toggle] = useToggle()
+const scrollLocked = useScrollLock(defaultWindow)
+
+watch(isToggled, (val) => {
+  scrollLocked.value = val
+  contentEl.value?.scrollTo({ top: 0 })
+})
+
 </script>
 
 <template>
@@ -20,9 +32,12 @@ const { slides } = defineProps<{
           :placeholder="[80, Math.round((80 / (slide.width || 3333)) * (slide.height || 2500))]" />
       </div>
     </div>
-    <div class="content">
+    <div class="content" :class="{ 'open': isToggled }" ref="contentEl">
       <div class="prose">
         <slot />
+      </div>
+      <div class="read-more">
+        <span @click.prevent="() => toggle()">{{ isToggled ? 'read less' : 'read more' }}</span>
       </div>
     </div>
   </div>
@@ -31,10 +46,13 @@ const { slides } = defineProps<{
 <style scoped lang="scss">
 .layout {
   @apply max-w-screen-xl mx-auto;
-  @apply grid grid-cols-12 gap-5;
+  @apply grid sm:grid-cols-12 gap-5;
 
   .slides {
-    @apply col-span-12 sm:col-span-8 flex flex-col gap-2;
+    @apply sm:col-span-8 flex flex-col gap-2;
+
+    // Padding for the floating content column in mobile
+    @apply pb-10 sm:pb-0;
 
     $gap: 20px;
 
@@ -48,10 +66,48 @@ const { slides } = defineProps<{
   }
 
   .content {
-    @apply col-span-12 sm:col-span-4;
+    @apply sm:col-span-4;
+
+    // Mobile styles
+    @apply fixed inset-x-0 bottom-[110px];
+    @apply bg-primary-background/90 pt-2 rounded-t-xl;
+    @apply backdrop-blur-sm backdrop-saturate-150;
+    @apply pointer-events-none max-h-28;
+    @apply overflow-scroll;
+
+    // Desktop styles overrides
+    @apply sm:relative sm:inset-auto sm:bottom-auto;
+    @apply sm:bg-transparent sm:pt-0 sm:max-h-full sm:rounded-none;
+    @apply sm:backdrop-blur-0 sm:backdrop-saturate-100 sm:pointer-events-auto;
+
+
+    &.open {
+      @apply pointer-events-auto;
+
+      // we need to substract the size of the nav
+      max-height: calc(100% - 110px);
+    }
+
+    .read-more {
+      @apply sm:hidden;
+      @apply sticky bottom-0 px-3 inset-x-0 bg-primary-background/90 pb-2 text-right;
+
+      @apply transition-all duration-300 ease-in-out;
+
+      &::before {
+        content: '';
+        @apply absolute inset-x-0 top-0 h-5 pointer-events-none -translate-y-full bg-gradient-to-t from-primary-background/90 to-primary-background/0;
+        @apply transition-all duration-300;
+      }
+
+      span {
+        @apply cursor-default pointer-events-auto;
+      }
+    }
 
     .prose {
-      @apply sticky top-8;
+      @apply sm:sticky sm:top-8;
+      @apply px-3 sm:px-0;
 
       @apply prose-p:text-primary-dimmed prose-headings:text-primary-dimmed prose-headings:font-bold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base;
     }

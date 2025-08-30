@@ -28,12 +28,12 @@ const { data } = await useAsyncData(`projects`, queryCollection('projects').orde
   }
 
   .cover {
-    @apply overflow-hidden aspect-[2/3] bg-primary-dimmed/20 relative;
+    @apply overflow-hidden aspect-[2/3] bg-primary-dimmed/20 relative rounded-xl;
 
     .arrow {
       @apply absolute top-2 right-2 text-3xl text-white mix-blend-difference;
       @apply transition-all duration-300 ease-in-out;
-      @apply origin-top-right scale-75 opacity-0;
+      @apply origin-top-right sm:scale-75 sm:opacity-0;
     }
 
 
