@@ -37,7 +37,7 @@ watch(isToggled, (val) => {
         <slot />
       </div>
       <div class="read-more">
-        <span @click.prevent="() => toggle()">{{ isToggled ? 'read less' : 'read more' }}</span>
+        <span @click.prevent="() => toggle()">{{ isToggled ? 'go back' : 'read more...' }}</span>
       </div>
     </div>
   </div>
@@ -70,10 +70,10 @@ watch(isToggled, (val) => {
 
     // Mobile styles
     @apply fixed inset-x-0 bottom-[110px];
-    @apply bg-primary-background/90 pt-2 rounded-t-xl;
-    @apply backdrop-blur-sm backdrop-saturate-150;
-    @apply pointer-events-none max-h-28;
+    @apply bg-primary-background pt-2 rounded-t-xl;
+    @apply pointer-events-none max-h-20;
     @apply overflow-scroll sm:overflow-visible;
+    @apply transition-all duration-300 ease-out;
 
     // Desktop styles overrides
     @apply sm:relative sm:inset-auto sm:bottom-auto;
@@ -90,7 +90,7 @@ watch(isToggled, (val) => {
 
     .read-more {
       @apply sm:hidden;
-      @apply sticky bottom-0 px-3 inset-x-0 bg-primary-background/90 pb-2 text-right;
+      @apply sticky bottom-0 px-3 inset-x-0 bg-primary-background/90 pb-2 text-left;
 
       @apply transition-all duration-300 ease-in-out;
 
