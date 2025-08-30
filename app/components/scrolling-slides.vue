@@ -32,12 +32,12 @@ watch(isToggled, (val) => {
           :placeholder="[80, Math.round((80 / (slide.width || 3333)) * (slide.height || 2500))]" />
       </div>
     </div>
-    <div class="content" :class="{ 'open': isToggled }" ref="contentEl">
+    <div class="content" :class="{ 'open': isToggled }" ref="contentEl" @click.prevent="() => !isToggled && toggle(true)">
       <div class="prose">
         <slot />
       </div>
       <div class="read-more">
-        <span @click.prevent="() => toggle()">{{ isToggled ? 'go back' : 'read more...' }}</span>
+        <span @click.prevent.stop="() => toggle()">{{ isToggled ? 'go back' : 'read more...' }}</span>
       </div>
     </div>
   </div>
@@ -52,7 +52,7 @@ watch(isToggled, (val) => {
     @apply sm:col-span-8 flex flex-col gap-2;
 
     // Padding for the floating content column in mobile
-    @apply pb-10 sm:pb-0;
+    @apply pb-2 sm:pb-0;
 
     $gap: 20px;
 
@@ -71,18 +71,18 @@ watch(isToggled, (val) => {
     // Mobile styles
     @apply fixed inset-x-0 bottom-[110px];
     @apply bg-primary-background pt-2 rounded-t-xl;
-    @apply pointer-events-none max-h-20;
-    @apply overflow-scroll sm:overflow-visible;
+    @apply max-h-20;
+    @apply overflow-hidden sm:overflow-visible;
     @apply transition-all duration-300 ease-out;
 
     // Desktop styles overrides
     @apply sm:relative sm:inset-auto sm:bottom-auto;
     @apply sm:bg-transparent sm:pt-0 sm:max-h-full sm:rounded-none;
-    @apply sm:backdrop-blur-0 sm:backdrop-saturate-100 sm:pointer-events-auto;
+    @apply sm:backdrop-blur-0 sm:backdrop-saturate-100;
 
 
     &.open {
-      @apply pointer-events-auto;
+      @apply overflow-scroll;
 
       // we need to substract the size of the nav
       max-height: calc(100% - 110px);
@@ -96,7 +96,7 @@ watch(isToggled, (val) => {
 
       &::before {
         content: '';
-        @apply absolute inset-x-0 top-0 h-5 pointer-events-none -translate-y-full bg-gradient-to-t from-primary-background/90 to-primary-background/0;
+        @apply absolute inset-x-0 top-0 h-2 pointer-events-none -translate-y-full bg-gradient-to-t from-primary-background/90 to-primary-background/0;
         @apply transition-all duration-300;
       }
 
