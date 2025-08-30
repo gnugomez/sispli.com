@@ -73,7 +73,7 @@ watch(isToggled, (val) => {
     @apply bg-primary-background/90 pt-2 rounded-t-xl;
     @apply backdrop-blur-sm backdrop-saturate-150;
     @apply pointer-events-none max-h-28;
-    @apply overflow-scroll;
+    @apply overflow-scroll sm:overflow-visible;
 
     // Desktop styles overrides
     @apply sm:relative sm:inset-auto sm:bottom-auto;
