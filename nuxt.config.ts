@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
     '@nuxt/content',
-    'unplugin-icons/nuxt'
+    'unplugin-icons/nuxt',
+    'nuxt-studio'
   ],
 
   postcss: {
@@ -29,9 +30,13 @@ export default defineNuxtConfig({
   image: {
   },
 
-  content: {
-    preview: {
-      api: 'https://api.nuxt.studio'
+  studio: {
+    repository: {
+      provider: 'github',
+      owner: 'gnugomez',
+      repo: 'sispli.com',
+      branch: 'main',
+      rootDir: ''
     }
   },
 

@@ -12,10 +12,11 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@nuxt/content": "3.6.3",
-    "@nuxt/image": "^1.11.0",
+    "@nuxt/content": "3.8.0",
+    "@nuxt/image": "^2.0.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "nuxt": "^4.0.3",
+    "nuxt-studio": "^0.0.0",
     "unplugin-vue-components": "^29.0.0",
     "vue": "^3.5.19",
     "vue-router": "^4.5.1"
