@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   },
 
   studio: {
+    route: '/_studio', // default
     repository: {
       provider: 'github',
       owner: 'gnugomez',
