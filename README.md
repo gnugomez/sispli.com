@@ -1,4 +1,3 @@
-
 # Sispli Studio Website 🧚
 
 This is the repository for the [Sispli Studio](https://sispli.com) website. Sispli Studio is a design studio with a strong focus on art direction, creative projects, branding, and visual experiences.

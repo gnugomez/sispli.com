@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defaultWindow } from '@vueuse/core';
+import { defaultWindow } from '@vueuse/core'
 
 const { slides } = defineProps<{
   slides: Array<{
@@ -12,34 +12,38 @@ const { slides } = defineProps<{
   }>
 }>()
 
-const contentEl = useTemplateRef<HTMLDivElement>("contentEl")
+const contentEl = useTemplateRef<HTMLDivElement>('contentEl')
 const [isToggled, toggle] = useToggle()
 const scrollLocked = useScrollLock(defaultWindow)
 const { y } = useScroll(contentEl)
 const { direction } = useSwipe(contentEl, {
   onSwipe: () => {
-    if (direction.value === 'down' && y.value === 0 && isToggled.value) toggle(false)
-  }
+    if (direction.value === 'down' && y.value === 0 && isToggled.value)
+      toggle(false)
+  },
 })
 
 watch(isToggled, (val) => {
   scrollLocked.value = val
   contentEl.value?.scrollTo({ top: 0 })
 })
-
 </script>
 
 <template>
   <div class="layout">
     <div class="slides">
       <div v-for="(slide, index) in slides" :key="index" class="slide">
-        <nuxt-img class="image" :src="slide.image.src" :width="slide.width || 3333" :height="slide.height || 2500"
+        <nuxt-img
+          class="image" :src="slide.image.src" :width="slide.width || 3333" :height="slide.height || 2500"
           :alt="slide.image.alt"
-          :placeholder="[80, Math.round((80 / (slide.width || 3333)) * (slide.height || 2500))]" />
+          :placeholder="[80, Math.round((80 / (slide.width || 3333)) * (slide.height || 2500))]"
+        />
       </div>
     </div>
-    <div class="content" :class="{ 'open': isToggled }" ref="contentEl"
-      @click.prevent="() => !isToggled && toggle(true)">
+    <div
+      ref="contentEl" class="content" :class="{ open: isToggled }"
+      @click.prevent="() => !isToggled && toggle(true)"
+    >
       <div class="prose">
         <slot />
       </div>
@@ -86,7 +90,6 @@ watch(isToggled, (val) => {
     @apply sm:relative sm:inset-auto sm:bottom-auto;
     @apply sm:bg-transparent sm:pt-0 sm:max-h-full sm:rounded-none;
     @apply sm:backdrop-blur-0 sm:backdrop-saturate-100;
-
 
     &.open {
       @apply overflow-scroll;

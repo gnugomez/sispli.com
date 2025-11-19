@@ -11,12 +11,12 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxt/content',
     'unplugin-icons/nuxt',
-    'nuxt-studio'
+    'nuxt-studio',
   ],
 
   postcss: {
     plugins: {
-      'tailwindcss': {},
+      tailwindcss: {},
       autoprefixer: {},
     },
   },
@@ -37,8 +37,8 @@ export default defineNuxtConfig({
       owner: 'gnugomez',
       repo: 'sispli.com',
       branch: 'main',
-      rootDir: ''
-    }
+      rootDir: '',
+    },
   },
 
   vite: {

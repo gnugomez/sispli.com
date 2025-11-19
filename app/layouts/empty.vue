@@ -1,8 +1,10 @@
 <template>
   <div class="layout-wrapper">
     <nuxt-img width="520" height="245" src="paper/tl.png" class="absolute w-[300px] sm:w-[520px] top-0 left-0" />
-    <nuxt-img width="484" height="472" src="paper/tr.png"
-      class="absolute w-[230px] sm:w-[484px] top-1/3 sm:top-0 right-0" />
+    <nuxt-img
+      width="484" height="472" src="paper/tr.png"
+      class="absolute w-[230px] sm:w-[484px] top-1/3 sm:top-0 right-0"
+    />
     <nuxt-img width="225" height="389" src="paper/bl.png" class="absolute w-[120px] sm:w-[225px] bottom-0 left-0" />
     <NuxtPage />
   </div>

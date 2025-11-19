@@ -2,6 +2,7 @@
   "name": "sispli-site",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -12,30 +13,28 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@nuxt/content": "3.8.0",
+    "@nuxt/content": "3.8.2",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/google-fonts": "^3.2.0",
-    "nuxt": "^4.1.0",
+    "nuxt": "^4.2.1",
     "nuxt-studio": "1.0.0-alpha.2",
-    "unplugin-vue-components": "^29.0.0",
-    "vue": "^3.5.19",
-    "vue-router": "^4.5.1"
+    "unplugin-vue-components": "^30.0.0",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.2.1",
-    "@iconify/json": "^2.2.379",
+    "@antfu/eslint-config": "^6.2.0",
+    "@iconify/json": "^2.2.408",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/typography": "^0.5.16",
-    "@vueuse/core": "13.7.0",
-    "@vueuse/nuxt": "13.7.0",
-    "autoprefixer": "^10.4.21",
-    "better-sqlite3": "^12.2.0",
-    "eslint": "^9.34.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@vueuse/core": "14.0.0",
+    "@vueuse/nuxt": "14.0.0",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^9.39.1",
     "postcss": "^8.5.6",
-    "sass": "^1.90.0",
-    "tailwindcss": "3.4.17",
-    "unplugin-icons": "^22.2.0"
-  },
-  "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b"
+    "sass": "^1.94.1",
+    "tailwindcss": "3.4.18",
+    "unplugin-icons": "^22.5.0"
+  }
 }
