@@ -1,12 +1,10 @@
-# Sispli Studio Website 🧚
+# sispli.com Website ☘️
 
-This is the repository for the [Sispli Studio](https://sispli.com) website. Sispli Studio is a design studio with a strong focus on art direction, creative projects, branding, and visual experiences.
+This is the repository for the [Sispli Studio](https://sispli.com) website.
 
 - Built with Nuxt for a modern, performant web experience
-- Uses [pnpm](https://pnpm.io/) for fast and efficient package management
-- Content managed via Markdown and Nuxt Content module
-- Tailwind CSS for rapid UI development
-- Enhanced image handling with Nuxt Image
+- Content managed via Markdown and Nuxt Content module + [studio](https://github.com/nuxt-content/studio) (self-hosted)
+- Uses [pnpm](https://pnpm.io/)
 
 ## Getting Started
 
@@ -26,4 +24,4 @@ The site will be available at [http://localhost:3000](http://localhost:3000).
 
 ---
 
-Made with ❤️ by Sispli Studio
+Made with ❤️ by gnugomez
