@@ -30,3 +30,5 @@ slides:
 # Yugen, the project
 
 The creation of this project that wanted to give voice to the young people who suffered traumas and mental health issues, giving them the place to talk about it. Composed by a Magazine, Symbols that meant the different problems that young people that contacted us suffered, the graphic design and aesthetic...  An audiovisual artistic piece.
+
+<https://www.instagram.com/yugen.theproject/>
