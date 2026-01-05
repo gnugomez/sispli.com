@@ -61,7 +61,7 @@ watch(isOutside, (outside) => {
   @apply flex justify-center items-center pointer-events-none;
 
   .wrapper {
-    @apply transition duration-300 origin-bottom relative pointer-events-auto;
+    @apply flex-1 sm:flex-initial transition duration-300 origin-bottom relative pointer-events-auto;
 
     @apply flex justify-center items-center gap-4 sm:gap-5 select-none;
     @apply px-6 pt-3 pb-8 sm:pb-3 sm:rounded-full border border-transparent transition-all duration-300;
