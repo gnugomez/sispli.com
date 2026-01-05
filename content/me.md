@@ -4,14 +4,14 @@ title: About me
 
 ::box{.grid.grid-cols-1.md:grid-cols-12.place-items-center.h-full}
   :::box{.md:col-span-8.grid.place-items-center}
-  ![colage nuria adamy](/about.png){height="600" placeholder="" width="600"}
+  ![colage nuria adamy](/about.png)
   :::
 
   :::box{.md:col-span-4}
   # Nuria Adamy,
 
-  A creative artist, with graphic design skills. Currently living in Girona (Catalonia), raised in Braga (Portugal) but I was born in Lleida, actually.
+  Creative with a focus on psychology and pedagogy. Lover of dance.
 
-  Studied Audiovisual Communication and Multimedia degree in ERAM (UDG).I created Please Studio to put my creativity out there. My favourite quote to say is “I have million-dollar ideas”
+  At Sispli Studio, the goal is to create ethically, rejecting perfectionism, and working from curiosity and creativity.
   :::
 ::
