@@ -25,9 +25,12 @@ export default defineContentConfig({
         include: '**/*.md',
         exclude: ['projects/**/*.md', 'posts/**/*.md'],
       },
+      schema: z.object({
+        size: z.enum(['small', 'default', 'full']).default('default'),
+      }),
     }),
     posts: defineCollection({
-      type: 'page',
+      type: 'data',
       source: 'posts/**/*.md',
       schema: z.object({
         title: z.string(),

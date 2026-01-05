@@ -11,7 +11,7 @@ useSeoMeta(page.value.seo)
 </script>
 
 <template>
-  <div class="layout">
+  <div :class="{ layout: true, small: page?.size === 'small', full: page?.size === 'full' }">
     <ContentRenderer v-if="page" :value="page" class="flex-1 relative" />
   </div>
 </template>
@@ -19,5 +19,11 @@ useSeoMeta(page.value.seo)
 <style scoped lang="scss">
 .layout {
   @apply max-w-screen-xl mx-auto flex-1 flex;
+}
+.small {
+  @apply max-w-screen-md mx-auto flex-1 flex;
+}
+.full {
+  @apply max-w-full mx-auto flex-1 flex;
 }
 </style>

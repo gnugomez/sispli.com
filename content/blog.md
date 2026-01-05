@@ -1,15 +1,13 @@
 ---
 title: Blog
+description: /list
+size: small
 ---
 
 # Blog
 
-## Post 2
+This is my blog, a place where you'll find whatever...
 
-sdfkljdsfjlsdjfljsdlfjlsd fjsd jfkjsdlk fjdsklj fklsdj f
+---
 
-## Post 1
-
-parrafo gfdgdfg dfg fdg dfgdf gdfg dfg dfg gdfgf dfggdfgdf
-
-![about](/about.png)
+:posts-stack
