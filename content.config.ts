@@ -24,6 +24,7 @@ export default defineContentConfig({
       source: {
         include: '**/*.md',
         exclude: ['projects/**/*.md', 'posts/**/*.md'],
+        prefix: '/',
       },
       schema: z.object({
         size: z.enum(['small', 'default', 'full']).default('default'),
