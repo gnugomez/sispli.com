@@ -34,52 +34,61 @@ watch(isOutside, (outside) => {
 
 <template>
   <div ref="menuRef" class="menu" :class="[{ inactive: isInactive && !arrivedState.bottom, relaxed }]">
-    <div class="item" @click="push('/reach')">
-      <span>Reach</span>
-      <img src="../assets/images/menu/contact.png" alt="contact" draggable="false">
-    </div>
-    <div class="item" @click="push('/work')">
-      <span>Work</span>
-      <img src="../assets/images/menu/portfolio.png" alt="portfolio" draggable="false">
-    </div>
-    <div class="item" @click="push('/me')">
-      <span>Me</span>
-      <img src="../assets/images/menu/me.png" alt="me" draggable="false">
-    </div>
-    <div class="item" @click="push('/shop')">
-      <span>Shop</span>
-      <img src="../assets/images/menu/shop.png" alt="shop" draggable="false">
+    <div class="wrapper">
+      <div class="item" @click="push('/reach')">
+        <span>Reach</span>
+        <img src="../assets/images/menu/contact.png" alt="contact" draggable="false">
+      </div>
+      <div class="item" @click="push('/work')">
+        <span>Work</span>
+        <img src="../assets/images/menu/portfolio.png" alt="portfolio" draggable="false">
+      </div>
+      <div class="item" @click="push('/me')">
+        <span>Me</span>
+        <img src="../assets/images/menu/me.png" alt="me" draggable="false">
+      </div>
+      <div class="item" @click="push('/shop')">
+        <span>Shop</span>
+        <img src="../assets/images/menu/shop.png" alt="shop" draggable="false">
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .menu {
-  @apply flex justify-center items-center gap-4 sm:gap-5 select-none;
-  @apply z-50 fixed bottom-0 sm:bottom-7 left-0 right-0 sm:right-auto sm:left-1/2 sm:transform sm:-translate-x-1/2;
-  @apply px-6 pt-3 pb-8 sm:pb-3 sm:rounded-full border border-transparent transition-all duration-300;
+  @apply z-50 fixed bottom-0 sm:bottom-7 left-0 right-0;
+  @apply flex justify-center items-center pointer-events-none;
 
-  &::before {
-    content: '';
-    @apply w-full h-full absolute inset-0 block sm:rounded-full overflow-hidden opacity-0;
-    @apply transition-all duration-300;
+  .wrapper {
+    @apply transition duration-300 origin-bottom relative pointer-events-auto;
 
-    --s: 28px;
-    /* control the size of the grid */
-    --n: 5;
-    /* control the granularity */
-    --t: 1px;
-    /* the thickness */
-    --g: 1px;
-    /* the gap between dashes */
+    @apply flex justify-center items-center gap-4 sm:gap-5 select-none;
+    @apply px-6 pt-3 pb-8 sm:pb-3 sm:rounded-full border border-transparent transition-all duration-300;
 
-    --c: #e3e3e3 25%, #0000 0;
-    background:
-      conic-gradient(at var(--g) var(--t), var(--c)) calc((var(--s)/var(--n) - var(--g) + var(--t))/2) 0/ calc(var(--s)/var(--n)) var(--s),
-      conic-gradient(from 180deg at var(--t) var(--g), var(--c)) 0 calc((var(--s)/var(--n) - var(--g) + var(--t))/2)/ var(--s) calc(var(--s)/var(--n));
+    &::before {
+      content: '';
+      @apply w-full h-full absolute inset-0 block sm:rounded-full overflow-hidden opacity-0;
+      @apply transition-all duration-300;
+
+      --s: 28px;
+      /* control the size of the grid */
+      --n: 5;
+      /* control the granularity */
+      --t: 1px;
+      /* the thickness */
+      --g: 1px;
+      /* the gap between dashes */
+
+      --c: #e3e3e3 25%, #0000 0;
+      background:
+        conic-gradient(at var(--g) var(--t), var(--c)) calc((var(--s)/var(--n) - var(--g) + var(--t))/2) 0/ calc(var(--s)/var(--n)) var(--s),
+        conic-gradient(from 180deg at var(--t) var(--g), var(--c)) 0 calc((var(--s)/var(--n) - var(--g) + var(--t))/2)/ var(--s) calc(var(--s)/var(--n));
+    }
   }
 
-  &:not(.relaxed) {
+
+  &:not(.relaxed) .wrapper {
     @apply bg-primary-background border-inherit;
 
     &::before {
@@ -87,7 +96,6 @@ watch(isOutside, (outside) => {
     }
   }
 
-  @apply transition duration-300 origin-bottom;
 
   .item {
     @apply cursor-pointer relative;

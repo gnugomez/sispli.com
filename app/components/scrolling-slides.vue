@@ -67,10 +67,6 @@ watch(isToggled, (val) => {
 
     $gap: 20px;
 
-    @media (min-width: calc(theme('screens.xl') + $gap * 2)) {
-      margin-left: calc((theme('screens.xl') - 100vw) / 2 + $gap);
-    }
-
     .slide img {
       @apply relative rounded-2xl sm:rounded-[2rem];
     }

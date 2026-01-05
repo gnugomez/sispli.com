@@ -37,7 +37,6 @@ export default defineNuxtConfig({
       owner: 'gnugomez',
       repo: 'sispli.com',
       branch: 'main',
-      rootDir: '',
     },
   },
 
