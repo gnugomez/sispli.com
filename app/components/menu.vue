@@ -47,9 +47,9 @@ watch(isOutside, (outside) => {
         <span>Me</span>
         <img src="../assets/images/menu/me.png" alt="me" draggable="false">
       </div>
-      <div class="item" @click="push('/shop')">
-        <span>Shop</span>
-        <img src="../assets/images/menu/shop.png" alt="shop" draggable="false">
+      <div class="item" @click="push('/blog')">
+        <span>Blog</span>
+        <img src="../assets/images/menu/shop.png" alt="blog" draggable="false">
       </div>
     </div>
   </div>

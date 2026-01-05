@@ -5,8 +5,8 @@ const { data } = await useAsyncData(`projects`, queryCollection('projects').orde
 </script>
 
 <template>
-  <div v-for="project in data" :key="project.path" class="projects">
-    <NuxtLink :to="project.path" class="project">
+  <div class="projects">
+    <NuxtLink v-for="project in data" :key="project.path" :to="project.path" class="project">
       <div class="cover">
         <IconArrow class="arrow" />
         <NuxtImg :src="project.cover" placeholder />
@@ -18,7 +18,7 @@ const { data } = await useAsyncData(`projects`, queryCollection('projects').orde
 
 <style lang="scss" scoped>
 .projects {
-  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-1;
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3;
 }
 
 .project {
