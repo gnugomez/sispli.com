@@ -9,14 +9,7 @@ export default defineContentConfig({
         categories: z.array(z.string()),
         createdAt: z.date(),
         cover: z.string().editor({ input: 'media' }),
-        slides: z.array(z.object({
-          image: z.object({
-            src: z.string().editor({ input: 'media' }),
-            alt: z.string(),
-          }),
-          height: z.number().optional(),
-          width: z.number().optional(),
-        })),
+        size: z.enum(['small', 'default', 'full']).default('default'),
       }),
     }),
     pages: defineCollection({

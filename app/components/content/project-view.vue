@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import { defaultWindow } from '@vueuse/core'
+import { computed, useTemplateRef, watch, useSlots } from 'vue'
+import { useToggle, useScrollLock, useScroll, useSwipe, defaultWindow } from '@vueuse/core'
 
-const { slides } = defineProps<{
-  slides: Array<{
-    image: {
-      src: string
-      alt: string
-    }
-    width?: number
-    height?: number
-  }>
-}>()
+const slots = useSlots()
+const slidesChildren = computed(() => slots.slides?.() || [])
 
 const contentEl = useTemplateRef<HTMLDivElement>('contentEl')
 const [isToggled, toggle] = useToggle()
@@ -32,18 +25,9 @@ watch(isToggled, (val) => {
 <template>
   <div class="layout">
     <div class="slides">
-      <div v-for="(slide, index) in slides" :key="index" class="slide">
-        <nuxt-img
-          class="image" :src="slide.image.src" :width="slide.width || 3333" :height="slide.height || 2500"
-          :alt="slide.image.alt"
-          :placeholder="[80, Math.round((80 / (slide.width || 3333)) * (slide.height || 2500))]"
-        />
-      </div>
+      <component v-for="(child, index) in slidesChildren" :key="index" :is="child" />
     </div>
-    <div
-      ref="contentEl" class="content" :class="{ open: isToggled }"
-      @click.prevent="() => !isToggled && toggle(true)"
-    >
+    <div ref="contentEl" class="content" :class="{ open: isToggled }" @click.prevent="() => !isToggled && toggle(true)">
       <div class="prose">
         <slot />
       </div>
@@ -56,7 +40,6 @@ watch(isToggled, (val) => {
 
 <style scoped lang="scss">
 .layout {
-  @apply max-w-screen-xl mx-auto;
   @apply grid sm:grid-cols-12 gap-5;
 
   .slides {
@@ -64,12 +47,6 @@ watch(isToggled, (val) => {
 
     // Padding for the floating content column in mobile
     @apply pb-2 sm:pb-0;
-
-    $gap: 20px;
-
-    .slide img {
-      @apply relative rounded-2xl sm:rounded-[2rem];
-    }
   }
 
   .content {
