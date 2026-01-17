@@ -1,6 +1,7 @@
 ---
 title: The bathroom
 categories: []
+cover: /projects/bathroom/4.jpg
 description: Indie Magazine, that is multilingual (spanish, catalan and english) made by Núria Adamy. That explores themes playing an important role in today’s fast changing environment. The focus of Issue 0 is about the gender norms in arts. Artist queer people collaborated in this magazine. Taboo topics are explained in different, imaginative, and original ways. If you’re interested in this project, contact me and we can collaborate, or I can print and send you this issue.
 seo:
   title: The-bathroom file
@@ -9,10 +10,25 @@ size: default
 slides: []
 ---
 
+::project-view
+> I think this is more of an adult problem than a children’s one. A young child doesn’t have a formed opinion about whether ballet is only for girls.”
+
 # The bathroom
 
 Indie Magazine, that is multilingual (spanish, catalan and english) made by Núria Adamy. That explores themes playing an important role in today’s fast changing environment. The focus of Issue 0 is about the gender norms in arts. Artist queer people collaborated in this magazine. Taboo topics are explained in different, imaginative, and original ways. If you’re interested in this project, contact me and we can collaborate, or I can print and send you this issue.
 
 Quote from Ricardo Bravo, important ballet dancer on *Ballet de Barcelona* 
 
-> I think this is more of an adult problem than a children’s one. A young child doesn’t have a formed opinion about whether ballet is only for girls.”
+#slides
+  :::project-slide
+  ![3](/projects/bathroom/3.jpg)
+  :::
+
+  :::project-slide
+  ![5](/projects/bathroom/5.jpg)
+  :::
+
+  :::project-slide
+  ![6](/projects/bathroom/6.jpg)
+  :::
+::

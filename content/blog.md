@@ -6,8 +6,6 @@ size: small
 
 # Blog
 
-This is my blog, a place where you'll find whatever...
-
----
+work in progress...✨🧚🏻
 
 :posts-stack
