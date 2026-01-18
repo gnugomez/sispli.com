@@ -10,7 +10,6 @@ size: small
 
 :posts-stack
 
-#default
 ::div
 #### Ballar, per mi.
 
