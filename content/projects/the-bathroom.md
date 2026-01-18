@@ -11,7 +11,7 @@ slides: []
 ---
 
 ::project-view
-> I think this is more of an adult problem than a children’s one. A young child doesn’t have a formed opinion about whether ballet is only for girls.”
+> "I think this is more of an adult problem than a children’s one. A young child doesn’t have a formed opinion about whether ballet is only for girls."
 
 # The bathroom
 
