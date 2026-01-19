@@ -1,5 +1,11 @@
 ---
-title: Fotos file
+title: Analog photography
+categories: []
+cover: /projects/FOTOS/1-Ia-5.jpg
+seo:
+  title: Fotos
+  description: ""
+size: default
 ---
 
 ::project-view
@@ -7,7 +13,6 @@ title: Fotos file
 ::
 
 ::project-slide
-#default
 ![1-Ia-1](/projects/FOTOS/1-Ia-1.jpg)
 ::
 
