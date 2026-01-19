@@ -1,5 +1,5 @@
 ---
-title: "Cos buit "
+title: Cos buit
 categories: []
 cover: /projects/Cos buit/DSC08875.JPG
 description: Art direction for a body facilitator who leads movement practices focused on people’s well-being.
