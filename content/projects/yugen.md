@@ -15,10 +15,19 @@ The creation of this project that wanted to give voice to the young people who s
 
 #slides
   :::project-slide
-  ![Yugen, the project](/projects/yugen/slides/1.jpg)
-  :::
+    ::::project-slide
+    :project-slide
 
-  :::project-slide
+    #default
+    ![1-Yugen-5](/projects/yugen/slides/1-Yugen-5.jpg)
+    ::::
+
+  #default
+
+  #default
+  ![Yugen, the project](/projects/yugen/slides/1.jpg)
+
+  #default
   ![Logo Yugen](/projects/yugen/slides/2.jpg)
   :::
 
