@@ -1,9 +1,8 @@
 ---
-title: Projects/please file
-description: "#default"
+title: Please Studio
+cover: /projectsplease/3-please-3.jpg
+categories: []
 ---
-
-\#default
 
 ::project-view
 # Please ! Studio
