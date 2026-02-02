@@ -10,7 +10,7 @@
 <style lang="scss">
 .slide {
   img {
-    @apply rounded-2xl sm:rounded-[2rem] w-full;
+    @apply rounded-sm sm:rounded-md w-full;
   }
 }
 </style>
