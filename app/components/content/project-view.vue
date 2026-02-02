@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, useTemplateRef, watch, useSlots } from 'vue'
-import { useToggle, useScrollLock, useScroll, useSwipe, defaultWindow } from '@vueuse/core'
+import { defaultWindow, useScroll, useScrollLock, useSwipe, useToggle } from '@vueuse/core'
+import { computed, useSlots, useTemplateRef, watch } from 'vue'
 
 const slots = useSlots()
 const slidesChildren = computed(() => slots.slides?.() || [])
@@ -25,7 +25,7 @@ watch(isToggled, (val) => {
 <template>
   <div class="layout">
     <div class="slides">
-      <component v-for="(child, index) in slidesChildren" :key="index" :is="child" />
+      <component :is="child" v-for="(child, index) in slidesChildren" :key="index" />
     </div>
     <div ref="contentEl" class="content" :class="{ open: isToggled }" @click.prevent="() => !isToggled && toggle(true)">
       <div class="prose">
