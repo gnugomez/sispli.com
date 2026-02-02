@@ -27,7 +27,7 @@ watch(isToggled, (val) => {
     <div class="slides">
       <component :is="child" v-for="(child, index) in slidesChildren" :key="index" />
     </div>
-    <div ref="contentEl" class="content" :class="{ open: isToggled }" @click.prevent="() => !isToggled && toggle(true)">
+    <div v-if="slots.default" ref="contentEl" class="content" :class="{ open: isToggled }" @click.prevent="() => !isToggled && toggle(true)">
       <div class="prose">
         <slot />
       </div>
@@ -44,6 +44,10 @@ watch(isToggled, (val) => {
 
   .slides {
     @apply sm:col-span-8 flex flex-col gap-2;
+
+    &:not(:has(+ .content)) {
+      @apply sm:col-span-12;
+    }
 
     // Padding for the floating content column in mobile
     @apply pb-2 sm:pb-0;

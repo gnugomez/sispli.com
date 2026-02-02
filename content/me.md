@@ -1,5 +1,6 @@
 ---
 title: About me
+size: default
 ---
 
 ::box{.grid.grid-cols-1.md:grid-cols-12.place-items-center.h-full}

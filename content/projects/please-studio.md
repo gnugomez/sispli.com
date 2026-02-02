@@ -1,7 +1,8 @@
 ---
 title: Please Studio
-cover: /projectsplease/3-please-3.jpg
 categories: []
+cover: /projectsplease/3-please-3.jpg
+size: full
 ---
 
 ::project-view
