@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import IconArrow from '~icons/ic/twotone-arrow-outward'
 
-const { data } = await useAsyncData(`projects`, queryCollection('projects').order('createdAt', 'DESC').all)
+const { data } = await useAsyncData(`projects`, queryCollection('projects').order('weight', 'DESC').all)
 </script>
 
 <template>

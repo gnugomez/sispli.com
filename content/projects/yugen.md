@@ -4,6 +4,7 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiu
 categories: []
 cover: /projects/yugen/cover.png
 size: full
+weight: 2
 ---
 
 ::project-view
@@ -14,47 +15,36 @@ The creation of this project that wanted to give voice to the young people who s
 <https://www.instagram.com/yugen.theproject/>
 
 #slides
-  :::project-slide
-  ![Yugen, the project](/projects/yugen/slides/1.jpg)
+  :::project-slide{src="/projects/yugen/slides/1.jpg"}
   :::
 
-  :::project-slide
-  ![1-Yugen-5](https://sispli.com/projects/yugen/slides/1-Yugen-5.jpg){height="" width=""}
+  :::project-slide{src="https://sispli.com/projects/yugen/slides/1-Yugen-5.jpg"}
   :::
 
-  :::project-slide
-  ![1-Yugen-5](/projects/yugen/slides/1-Yugen.jpg)
+  :::project-slide{src="/projects/yugen/slides/1-Yugen.jpg"}
   :::
 
-  :::project-slide
-  ![1-Yugen-5](/projects/yugen/slides/1-Yugen-1.jpg)
+  :::project-slide{src="/projects/yugen/slides/1-Yugen-1.jpg"}
   :::
 
-  :::project-slide
-  ![1-Yugen-5](/projects/yugen/slides/1-Yugen-2.jpg)
+  :::project-slide{src="/projects/yugen/slides/1-Yugen-2.jpg"}
   :::
 
-  :::project-slide
-  ![Logo Yugen](/projects/yugen/slides/2.jpg)
+  :::project-slide{src="/projects/yugen/slides/2.jpg"}
   :::
 
-  :::project-slide
-  ![Marques yugen](/projects/yugen/slides/3.jpg)
+  :::project-slide{src="/projects/yugen/slides/3.jpg"}
   :::
 
-  :::project-slide
-  ![Bullying](/projects/yugen/slides/4.jpg)
+  :::project-slide{src="/projects/yugen/slides/4.jpg"}
   :::
 
-  :::project-slide
-  ![Soledat](/projects/yugen/slides/5.jpg)
+  :::project-slide{src="/projects/yugen/slides/5.jpg"}
   :::
 
-  :::project-slide
-  ![Dol](/projects/yugen/slides/6.jpg)
+  :::project-slide{src="/projects/yugen/slides/6.jpg"}
   :::
 
-  :::project-slide
-  ![Conflictes íntims](/projects/yugen/slides/7.jpg)
+  :::project-slide{src="/projects/yugen/slides/7.jpg"}
   :::
 ::

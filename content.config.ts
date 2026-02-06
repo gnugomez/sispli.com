@@ -9,7 +9,8 @@ export default defineContentConfig({
         categories: z.array(z.string()),
         createdAt: z.date(),
         cover: z.string().editor({ input: 'media' }),
-        size: z.enum(['small', 'default', 'full']).default('default'),
+        size: z.enum(['small', 'default', 'full']).default('full'),
+        weight: z.number().default(0),
       }),
     }),
     pages: defineCollection({

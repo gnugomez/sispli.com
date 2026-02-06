@@ -57,7 +57,7 @@ watch(isOutside, (outside) => {
 
 <style lang="scss" scoped>
 .menu {
-  @apply z-50 fixed bottom-0 sm:bottom-7 left-0 right-0;
+  @apply fixed bottom-0 sm:bottom-7 left-0 right-0;
   @apply flex justify-center items-center pointer-events-none;
 
   .wrapper {
@@ -87,7 +87,6 @@ watch(isOutside, (outside) => {
     }
   }
 
-
   &:not(.relaxed) .wrapper {
     @apply bg-primary-background border-inherit;
 
@@ -95,7 +94,6 @@ watch(isOutside, (outside) => {
       @apply opacity-100;
     }
   }
-
 
   .item {
     @apply cursor-pointer relative;
