@@ -9,3 +9,16 @@ updates:
     directory: / # Location of package manifests
     schedule:
       interval: daily
+    groups:
+      # Group 1: Linters, Test Runners, Build tools (usually safe to batch)
+      dev-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      # Group 2: The actual app code (more likely to cause breaking changes)
+      prod-dependencies:
+        dependency-type: "production"
+        update-types:
+          - "patch"
