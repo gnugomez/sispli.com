@@ -1,7 +1,6 @@
 ---
 title: My Work
 description: A showcase of my professional projects and collaborations.
-size: default
 ---
 
 # My Work

@@ -4,8 +4,8 @@ size: default
 ---
 
 ::box{.grid.grid-cols-1.md:grid-cols-12.place-items-center.h-full}
-  :::box{.md:col-span-8.grid.place-items-center}
-  ![colage nuria adamy](/about.png)
+  :::box{.md:col-span-8.grid.place-items-center.w-full.p-10}
+  ![colage nuria adamy](/about.png){.w-full}
   :::
 
   :::box{.md:col-span-4}
