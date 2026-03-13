@@ -1,6 +1,5 @@
 ---
 title: Analog Photography
-categories: []
 cover: /projects/fotos/1-Ia-5.jpg
 seo:
   title: Fotos file

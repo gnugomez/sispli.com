@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { defaultWindow, useScroll, useScrollLock, useSwipe, useToggle } from '@vueuse/core'
+import { breakpointsTailwind, defaultWindow, useScroll, useScrollLock, useSwipe, useToggle } from '@vueuse/core'
 import { computed, useSlots, useTemplateRef, watch } from 'vue'
+import IconBack from '~icons/tabler/arrow-back-up'
+import IconPlus from '~icons/tabler/plus'
 
 const slots = useSlots()
 const slidesChildren = computed(() => slots.slides?.() || [])
@@ -15,6 +17,12 @@ const { direction } = useSwipe(contentEl, {
       toggle(false)
   },
 })
+const { sm } = useBreakpoints(breakpointsTailwind)
+
+onClickOutside(contentEl, () => {
+  if (isToggled.value)
+    toggle(false)
+})
 
 watch(isToggled, (val) => {
   scrollLocked.value = val
@@ -27,12 +35,20 @@ watch(isToggled, (val) => {
     <div class="slides">
       <component :is="child" v-for="(child, index) in slidesChildren" :key="index" />
     </div>
-    <div v-if="slots.default" ref="contentEl" class="content" :class="{ open: isToggled }" @click.prevent="() => !isToggled && toggle(true)">
+    <div
+      v-if="slots.default" ref="contentEl" class="content" :class="{ open: isToggled }"
+      @click.prevent="() => !isToggled && !sm && toggle(true)"
+    >
+      <div v-if="y > 1" class="scroll-shadow" />
       <div class="prose">
         <slot />
       </div>
       <div class="read-more">
-        <span @click.prevent.stop="() => toggle()">{{ isToggled ? 'go back' : 'read more...' }}</span>
+        <span @click.prevent.stop="() => !sm && toggle()">
+          {{ isToggled ? 'back' : 'read more' }}{{ " " }}
+          <IconPlus v-if="!isToggled" class="inline" />
+          <IconBack v-else class="inline" />
+        </span>
       </div>
     </div>
   </div>
@@ -50,34 +66,55 @@ watch(isToggled, (val) => {
     }
 
     // Padding for the floating content column in mobile
-    @apply pb-2 sm:pb-0;
+    @apply pb-32 sm:pb-0;
+  }
+
+  .content .prose {
+    @apply line-clamp-3 sm:line-clamp-none;
+  }
+
+  &:has(.content.open) {
+    &::before {
+      @apply opacity-100;
+    }
+
+    .content .prose {
+      @apply line-clamp-none;
+    }
+  }
+
+  &::before {
+    content: '';
+    @apply fixed inset-0 pointer-events-none;
+    @apply bg-white/65;
+    @apply transition-opacity duration-300;
+    @apply opacity-0;
   }
 
   .content {
     @apply sm:col-span-4;
 
     // Mobile styles
-    @apply fixed inset-x-0 bottom-[110px];
-    @apply bg-primary-background pt-2 rounded-t-xl;
-    @apply max-h-20;
+    @apply fixed inset-x-0 bottom-[110px] z-10;
+    @apply bg-primary-background/90 backdrop-blur-md pt-2;
     @apply overflow-hidden sm:overflow-visible;
-    @apply transition-all duration-300 ease-out;
+    @apply border-t border-primary-dimmed/50;
+    @apply max-h-full;
 
     // Desktop styles overrides
     @apply sm:relative sm:inset-auto sm:bottom-auto;
     @apply sm:bg-transparent sm:pt-0 sm:max-h-full sm:rounded-none;
     @apply sm:backdrop-blur-0 sm:backdrop-saturate-100;
+    @apply sm:border-none;
 
     &.open {
       @apply overflow-scroll;
-
-      // we need to substract the size of the nav
       max-height: calc(100% - 110px);
     }
 
     .read-more {
       @apply sm:hidden;
-      @apply sticky bottom-0 px-3 inset-x-0 bg-primary-background/90 pb-2 text-left;
+      @apply sticky bottom-0 px-3 mt-4 inset-x-0 bg-primary-background/90 pb-2 text-left;
 
       @apply transition-all duration-300 ease-in-out;
 
@@ -97,6 +134,13 @@ watch(isToggled, (val) => {
       @apply px-3 sm:px-0;
 
       @apply prose-p:text-primary-dimmed prose-headings:text-primary-dimmed prose-headings:font-bold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base;
+    }
+
+    .scroll-shadow {
+      @apply sticky inset-x-0 -top-2 h-10 pointer-events-none;
+      @apply bg-gradient-to-b from-primary-background to-primary-background/0;
+      @apply transition-opacity duration-300;
+      @apply opacity-100;
     }
   }
 }

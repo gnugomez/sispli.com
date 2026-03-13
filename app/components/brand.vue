@@ -9,7 +9,7 @@ const onGoToHome = () => push('/')
       Sispli!
     </span>
     <img
-      src="../assets/images/sispli_logo.svg" class="sm:col-span-2 cursor-pointer max-h-16 sm:max-h-24"
+      src="../assets/images/sispli_logo.svg" class="sm:col-span-2 cursor-pointer max-h-12 sm:max-h-24"
       draggable="false" @click="onGoToHome"
     >
     <span class="title col-span-4 sm:col-span-5 ml-auto hidden sm:block" @click="onGoToHome">

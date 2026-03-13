@@ -57,7 +57,7 @@ watch(isOutside, (outside) => {
 
 <style lang="scss" scoped>
 .menu {
-  @apply fixed bottom-0 sm:bottom-7 left-0 right-0;
+  @apply fixed bottom-0 sm:bottom-7 left-0 right-0 z-10;
   @apply flex justify-center items-center pointer-events-none;
 
   .wrapper {

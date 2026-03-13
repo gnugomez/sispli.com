@@ -1,14 +1,12 @@
 ---
 title: The bathroom
-description: Indie Magazine, that is multilingual (spanish, catalan and english) made by Núria Adamy. That explores themes playing an important role in today’s fast changing environment. The focus of Issue 0 is about the gender norms in arts. Artist queer people collaborated in this magazine. Taboo topics are explained in different, imaginative, and original ways. If you’re interested in this project, contact me and we can collaborate, or I can print and send you this issue.
-categories: []
 cover: /projects/bathroom/4.jpg
+description: Indie Magazine, that is multilingual (spanish, catalan and english) made by Núria Adamy. That explores themes playing an important role in today’s fast changing environment. The focus of Issue 0 is about the gender norms in arts. Artist queer people collaborated in this magazine. Taboo topics are explained in different, imaginative, and original ways. If you’re interested in this project, contact me and we can collaborate, or I can print and send you this issue.
 seo:
   title: The-bathroom file
   description: Indie Magazine, that is multilingual (spanish, catalan and english) made by Núria Adamy. That explores themes playing an important role in today’s fast changing environment. The focus of Issue 0 is about the gender norms in arts. Artist queer people collaborated in this magazine. Taboo topics are explained in different, imaginative, and original ways. If you’re interested in this project, contact me and we can collaborate, or I can print and send you this issue.
 size: full
 weight: 3
-slides: []
 ---
 
 ::project-view

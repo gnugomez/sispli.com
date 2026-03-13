@@ -20,7 +20,7 @@ const props = defineProps<{
 <style lang="scss">
 .slide {
   img {
-    @apply rounded-sm sm:rounded-md w-full;
+    @apply rounded-md w-full;
   }
 }
 </style>

@@ -1,6 +1,5 @@
 ---
 title: Cos buit
-categories: []
 cover: /projects/cos-buit/DSC08875.JPG
 createdAt: 2025-05-31T22:00:00.000Z
 description: Art direction for a body facilitator who leads movement practices focused on people’s well-being.
