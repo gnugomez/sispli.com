@@ -8,6 +8,7 @@ const isHome = computed(() => route.path === '/')
 </script>
 
 <template>
+  <NuxtLoadingIndicator color="#2E396A" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
