@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import type { Product } from '~~/server/api/shop/products.get'
 
-const limit = 20
+const { paginable, perPage = 20 } = defineProps<{
+  paginable?: boolean
+  perPage?: number
+}>()
+
 const page = ref(1)
 
 const key = computed(() => `shop-products-page-${page.value}`)
@@ -11,7 +15,7 @@ const { data, pending } = await useAsyncData(
   () => $fetch('/api/shop/products', {
     params: {
       page: page.value,
-      limit,
+      limit: perPage,
     },
   }),
   {
@@ -51,7 +55,7 @@ function getProductImage(product: NonNullable<typeof data.value>['products'][num
     <div v-if="pending" class="text-center text-primary">
       Loading products...
     </div>
-    <a v-if="!pending && !isLastPage" href="#" class="cursor-default" @click.prevent="page++">
+    <a v-if="paginable && !pending && !isLastPage" href="#" class="cursor-default" @click.prevent="page++">
       Load more
     </a>
   </div>

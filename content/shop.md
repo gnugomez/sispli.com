@@ -6,4 +6,5 @@ size: default
 
 # Shop 📦
 
-:shop-products
+::shop-products{paginable :perPage='10'}
+::

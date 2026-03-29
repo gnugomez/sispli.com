@@ -17,9 +17,10 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#2E396A',
-          background: '#FFFBF8',
-          dimmed: '#5C70CE',
+          'DEFAULT': '#2E396A',
+          'background': '#FFFBF8',
+          'dimmed': '#5C70CE',
+          'contrast-text': '#FFFFFF',
         },
       },
       fontFamily: {

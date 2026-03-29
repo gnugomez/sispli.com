@@ -5,10 +5,10 @@ const route = useRoute()
 const productId = Number(route.params.id)
 
 const { data, status, error } = await useAsyncData(
-  'shop-products',
+  'shop-products:full',
   () => $fetch('/api/shop/products', {
     params: {
-      limit: 200,
+      limit: 999,
     },
   }),
 )
@@ -99,7 +99,8 @@ function formatPrice(amount: string, currency: string): string {
 
 <style lang="scss" scoped>
 .layout {
-  @apply relative sm:grid sm:grid-cols-12 gap-5 min-w-0;
+  @apply relative sm:grid sm:grid-cols-12 gap-5 min-w-0 w-full;
+  @apply max-w-screen-xl mx-auto flex-1;
 
   .photos {
     @apply sm:col-span-8 px-3 -mx-3 sm:px-0 sm:mx-0;
