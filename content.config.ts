@@ -17,7 +17,7 @@ export default defineContentConfig({
       type: 'page',
       source: {
         include: '**/*.md',
-        exclude: ['projects/**/*.md', 'posts/**/*.md'],
+        exclude: ['projects/**/*.md', 'posts/**/*.md', 'shop/**/*.md'],
         prefix: '/',
       },
       schema: z.object({
@@ -33,6 +33,10 @@ export default defineContentConfig({
         draft: z.boolean().default(false),
         createdAt: z.date(),
       }),
+    }),
+    products: defineCollection({
+      type: 'page',
+      source: 'shop/**/*.md',
     }),
   },
 })

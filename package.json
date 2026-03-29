@@ -16,9 +16,9 @@
     "@nuxt/content": "3.8.2",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/google-fonts": "^3.2.0",
+    "consola": "^3.4.2",
     "nuxt": "^4.3.1",
     "nuxt-studio": "1.4.0",
-    "unplugin-vue-components": "^30.0.0",
     "vue": "^3.5.30",
     "vue-router": "^5.0.3"
   },
@@ -35,6 +35,7 @@
     "postcss": "^8.5.8",
     "sass": "^1.98.0",
     "tailwindcss": "3.4.19",
-    "unplugin-icons": "^23.0.1"
+    "unplugin-icons": "^23.0.1",
+    "unplugin-vue-components": "^30.0.0"
   }
 }
