@@ -23,8 +23,8 @@
     "vue-router": "^5.0.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.7.0",
-    "@iconify/json": "^2.2.448",
+    "@antfu/eslint-config": "^7.7.3",
+    "@iconify/json": "^2.2.458",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/typography": "^0.5.19",
