@@ -1,3 +1,4 @@
+import process from 'node:process'
 import IconsResolver from 'unplugin-icons/resolver'
 import ViteComponents from 'unplugin-vue-components/vite'
 
@@ -5,6 +6,12 @@ import ViteComponents from 'unplugin-vue-components/vite'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/scss/main.scss'],
+
+  runtimeConfig: {
+    vintedUserId: process.env.VINTED_USER_ID || '',
+    vintedDomain: process.env.VINTED_DOMAIN || 'www.vinted.es',
+  },
+
   modules: [
     '@nuxt/image',
     '@vueuse/nuxt',
@@ -50,7 +57,7 @@ export default defineNuxtConfig({
           }),
         ],
         dts: true,
-      }),
+      }) as any,
     ],
   },
 })

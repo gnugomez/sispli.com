@@ -1,7 +1,8 @@
 ---
 title: Ballar per mi
+createdAt: 2026-01-08T23:00:00.000Z
+description: Tinc 24 anys, ara. He passat part de la meva infància no podent ser tan elàstica com la meva millor amiga, no volent fer res amb el meu cos per evitar ser “dolenta” i sentir-me malament, i evitant fer esport perquè no m’interessava gens ser competitiva, ja que, en el meu cap, ja havia perdut abans de començar.
 draft: false
-createdAt: 2026-01-09T00:00:00
 ---
 
 Tinc 24 anys, ara. He passat part de la meva infància no podent ser tan elàstica com la meva millor amiga, no volent fer res amb el meu cos per evitar ser “dolenta” i sentir-me malament, i evitant fer esport perquè no m’interessava gens ser competitiva, ja que, en el meu cap, ja havia perdut abans de començar.

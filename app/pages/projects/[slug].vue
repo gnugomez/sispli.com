@@ -10,7 +10,7 @@ useSeoMeta(data.value.seo)
 </script>
 
 <template>
-  <div :class="{ layout: true, small: data?.size === 'small', full: data?.size === 'full' }">
+  <div class="layout" :class="{ small: data?.size === 'small', full: data?.size === 'full' }">
     <ContentRenderer v-if="data" :value="data" class="flex-1 relative" />
   </div>
 </template>
@@ -26,4 +26,3 @@ useSeoMeta(data.value.seo)
   @apply max-w-full mx-auto flex-1 flex;
 }
 </style>
-
