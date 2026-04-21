@@ -18,7 +18,7 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "nuxt": "^4.3.1",
     "nuxt-studio": "1.4.0",
-    "unplugin-vue-components": "^30.0.0",
+    "unplugin-vue-components": "^32.0.0",
     "vue": "^3.5.32",
     "vue-router": "^5.0.4"
   },
