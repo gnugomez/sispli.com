@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@nuxt/content": "3.8.2",
-    "@nuxt/image": "^2.0.0",
+    "@nuxt/image": "^2.1.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "nuxt": "^4.5.1",
     "nuxt-studio": "1.7.0",
